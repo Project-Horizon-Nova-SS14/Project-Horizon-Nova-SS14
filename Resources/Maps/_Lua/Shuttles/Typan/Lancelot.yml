@@ -6543,7 +6543,6 @@ entities:
           showEnts: False
           occludes: True
           ents:
-          - 835
 - proto: NFSpawnerRandomPosterFsb
   entities:
   - uid: 836
@@ -6618,17 +6617,6 @@ entities:
     - type: Transform
       pos: -0.5,5.5
       parent: 1
-- proto: PlushieHolyPainEri
-  entities:
-  - uid: 835
-    components:
-    - type: MetaData
-      desc: Я в шкафу прячусь!
-    - type: Transform
-      parent: 834
-    - type: Physics
-      canCollide: False
-    - type: InsideEntityStorage
 - proto: PosterContrabandEnlistGorlex
   entities:
   - uid: 847

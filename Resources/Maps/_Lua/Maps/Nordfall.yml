@@ -97216,13 +97216,6 @@ entities:
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
-- proto: Plushie25Hydra08Alliria
-  entities:
-  - uid: 14467
-    components:
-    - type: Transform
-      pos: -9.516869,-13.35791
-      parent: 1
 - proto: PlushieArachind
   entities:
   - uid: 14468
@@ -97285,20 +97278,6 @@ entities:
     - type: Transform
       pos: -82.52982,-9.484648
       parent: 1
-- proto: PlushieHacksLua
-  entities:
-  - uid: 14474
-    components:
-    - type: Transform
-      pos: -23.325563,35.624886
-      parent: 1
-- proto: PlushieHolyPainEri
-  entities:
-  - uid: 14475
-    components:
-    - type: Transform
-      pos: -11.415306,-13.35791
-      parent: 1
 - proto: PlushieHuman
   entities:
   - uid: 14476
@@ -97315,13 +97294,6 @@ entities:
     components:
     - type: Transform
       pos: -43.466347,-40.42396
-      parent: 1
-- proto: PlushieLilaMarrnes
-  entities:
-  - uid: 14478
-    components:
-    - type: Transform
-      pos: -23.325563,34.61637
       parent: 1
 - proto: PlushieMarbleFox
   entities:
@@ -97389,13 +97361,6 @@ entities:
       name: HolyPain
     - type: Transform
       pos: 3.9818783,-38.2065
-      parent: 1
-- proto: PlushieSidrie
-  entities:
-  - uid: 14486
-    components:
-    - type: Transform
-      pos: -24.488352,54.56737
       parent: 1
 - proto: PortableGeneratorJrPacman
   entities:

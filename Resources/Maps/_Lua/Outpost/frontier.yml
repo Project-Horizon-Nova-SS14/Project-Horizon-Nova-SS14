@@ -33181,21 +33181,6 @@ entities:
     - type: Transform
       pos: -28.595388,14.614071
       parent: 2
-- proto: PlushieHacksLua
-  entities:
-  - uid: 3247
-    components:
-    - type: Transform
-      pos: -49.585228,6.7078347
-      parent: 2
-    - type: MovedByPressure
-      enabled: False
-    - type: Godmode
-      wasMovedByPressure: True
-    missingComponents:
-    - Food
-    - Item
-    - Pullable
 - proto: PlushieMoffbar
   entities:
   - uid: 1600

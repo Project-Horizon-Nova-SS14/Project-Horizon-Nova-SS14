@@ -7863,13 +7863,6 @@ entities:
       rot: 1.5707963267948966 rad
       pos: 2.5,-2.5
       parent: 1
-- proto: PlushieAki
-  entities:
-  - uid: 1257
-    components:
-    - type: Transform
-      pos: 6.50575,6.5010786
-      parent: 1
 - proto: PlushieGoblin
   entities:
   - uid: 624

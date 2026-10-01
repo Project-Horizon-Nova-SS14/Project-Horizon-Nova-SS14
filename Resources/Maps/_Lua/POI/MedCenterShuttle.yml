@@ -30416,13 +30416,6 @@ entities:
       parent: 1
     - type: DeltaPressure
       gridUid: 1
-- proto: Plushie25Hydra08Alliria
-  entities:
-  - uid: 4124
-    components:
-    - type: Transform
-      pos: -15.895974,-3.0520635
-      parent: 1
 - proto: PlushieCatTabby
   entities:
   - uid: 4125
@@ -30442,13 +30435,6 @@ entities:
       name: Плюшевый Фелегнид
     - type: Transform
       pos: 5.8648868,-6.5177436
-      parent: 1
-- proto: PlushieHolyPainEri
-  entities:
-  - uid: 4127
-    components:
-    - type: Transform
-      pos: -14.19839,-3.1689994
       parent: 1
 - proto: PlushieLizard
   entities:
@@ -30484,16 +30470,6 @@ entities:
     - type: Clothing
       slots: HEAD
       clothingVisuals: {}
-- proto: PlushieSilEva
-  entities:
-  - uid: 4132
-    components:
-    - type: MetaData
-      desc: '"Виски кончилось, несите ещё!" - Вот, что написано на небольшой этикетке, которую можно разглядеть, присмотревшись. Видимо, Виски - его любимый напиток?'
-      name: Плюшевый Джейс Санте
-    - type: Transform
-      pos: 0.7388971,12.562459
-      parent: 1
 - proto: PlushieSpaceLizard
   entities:
   - uid: 4133

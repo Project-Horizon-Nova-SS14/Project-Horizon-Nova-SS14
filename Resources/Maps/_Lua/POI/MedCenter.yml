@@ -39992,13 +39992,6 @@ entities:
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
-- proto: PlushieHacksLua
-  entities:
-  - uid: 5547
-    components:
-    - type: Transform
-      pos: -15.51215,14.579688
-      parent: 1
 - proto: PlushieHuman
   entities:
   - uid: 5548
@@ -40019,13 +40012,6 @@ entities:
     components:
     - type: Transform
       pos: -11.5456705,3.482535
-      parent: 1
-- proto: PlushieLilaMarrnes
-  entities:
-  - uid: 5551
-    components:
-    - type: Transform
-      pos: -19.524672,14.533863
       parent: 1
 - proto: PlushieMarbleFox
   entities:

@@ -16602,13 +16602,6 @@ entities:
       parent: 1
     - type: DeltaPressure
       gridUid: 1
-- proto: PlushieAlexL1ne
-  entities:
-  - uid: 2326
-    components:
-    - type: Transform
-      pos: 34.3644,20.44369
-      parent: 1
 - proto: PlushieMoffbar
   entities:
   - uid: 2327
