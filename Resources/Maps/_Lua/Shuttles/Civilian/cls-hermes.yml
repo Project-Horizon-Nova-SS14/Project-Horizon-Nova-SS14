@@ -6241,13 +6241,6 @@ entities:
     - type: Transform
       pos: -15.5,-32.5
       parent: 1
-- proto: PlushieHacksLua
-  entities:
-  - uid: 829
-    components:
-    - type: Transform
-      pos: 1.4575922,-2.5576954
-      parent: 1
 - proto: PortableGeneratorJrPacman
   entities:
   - uid: 830

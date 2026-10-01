@@ -14854,13 +14854,6 @@ entities:
     - type: Transform
       pos: 7.473947,10.463517
       parent: 1
-- proto: PlushieSilKel
-  entities:
-  - uid: 3013
-    components:
-    - type: Transform
-      pos: 3.584806,8.661784
-      parent: 1
 - proto: PortableGeneratorSuperPacman
   entities:
   - uid: 58

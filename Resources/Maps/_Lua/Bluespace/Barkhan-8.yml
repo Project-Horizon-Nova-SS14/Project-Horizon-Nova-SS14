@@ -30266,13 +30266,6 @@ entities:
     - type: Transform
       pos: 6.4867816,-0.48327446
       parent: 1
-- proto: PlushieHolyPainEri
-  entities:
-  - uid: 4086
-    components:
-    - type: Transform
-      pos: -25.405134,31.567835
-      parent: 1
 - proto: PlushieSharkBlue
   entities:
   - uid: 4087

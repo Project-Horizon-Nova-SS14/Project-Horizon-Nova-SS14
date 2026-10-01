@@ -17,7 +17,6 @@
     # successChance: 1
     # interactSuccessSpawn: EffectHearts
     # interactSuccessString: hugging-success-generic
-    # interactSuccessSound: /Audio/_Lua/Plushie/frfrfr.ogg
 
 - type: entity
   parent: LWClothingHeadHatFoxyO

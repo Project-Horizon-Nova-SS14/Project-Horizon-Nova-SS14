@@ -12093,13 +12093,6 @@ entities:
       rot: 1.5707963267948966 rad
       pos: 5.5,-29.5
       parent: 1
-- proto: PlushieMariaRogozina
-  entities:
-  - uid: 1669
-    components:
-    - type: Transform
-      pos: 9.593266,-55.169136
-      parent: 1
 - proto: PottedPlantRandom
   entities:
   - uid: 1670
