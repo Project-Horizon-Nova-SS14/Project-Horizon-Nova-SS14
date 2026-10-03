@@ -12,5 +12,6 @@ construction-category-plumbing = Сантехника
 construction-category-misc = Разное
 construction-category-clothing = Одежда
 construction-category-favorites = Избранное
+construction-category-starting = Стартовое
 construction-add-favorite-button = Добавить в избранное
 construction-remove-from-favorite-button = Удалить из избранного

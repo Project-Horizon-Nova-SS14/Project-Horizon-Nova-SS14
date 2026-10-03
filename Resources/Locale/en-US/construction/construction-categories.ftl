@@ -12,5 +12,6 @@ construction-category-plumbing = Plumbing
 construction-category-misc = Misc
 construction-category-clothing = Clothing
 construction-category-favorites = Favorites
+construction-category-starting = Starting
 construction-add-favorite-button = Add to favorites
 construction-remove-from-favorite-button = Remove from favorites

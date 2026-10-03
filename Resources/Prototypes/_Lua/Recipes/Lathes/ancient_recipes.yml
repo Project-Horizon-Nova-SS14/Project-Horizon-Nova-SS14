@@ -30,6 +30,38 @@
     Coal: 20
 
 - type: latheRecipe
+  id: AncientSheetPlasma
+  result: SheetPlasma1
+  completetime: 3
+  materials:
+    RawPlasma: 100
+    Coal: 50
+
+- type: latheRecipe
+  id: AncientSheetLithium
+  result: SheetLithium1
+  completetime: 3
+  materials:
+    LithiumOre: 150
+    Coal: 50
+
+- type: latheRecipe
+  id: AncientSheetCopper
+  result: SheetCopper1
+  completetime: 3
+  materials:
+    CopperOre: 100
+    Coal: 30
+
+- type: latheRecipe
+  id: AncientArmorPlateEconomy1
+  result: ArmorPlateEconomy1
+  completetime: 15
+  materials:
+    RawIron: 4000
+    Coal: 1200
+
+- type: latheRecipe
   id: AncientSheetPlastic
   result: SheetPlastic1
   completetime: 3
@@ -48,8 +80,27 @@
   result: CableApcStack1
   completetime: 3
   materials:
-    Steel: 250
+    Copper: 250
     Silver: 50
+
+- type: latheRecipe
+  id: AncientCableHv
+  result: CableHVStack1
+  completetime: 3
+  materials:
+    Gold: 300
+    Silver: 300
+
+- type: latheRecipe
+  id: AncientComponentBrickEconomy1
+  result: ComponentBrickEconomy1
+  completetime: 15
+  materials:
+    Steel: 5700
+    Copper: 800
+    Gold: 600
+    Silver: 600
+    Lithium: 600
 
 - type: latheRecipe
   id: AncientScrewdriver
@@ -234,6 +285,15 @@
     Glass: 100
     Paper: 200
 
+- type: latheRecipe
+  id: AncientBlueprintIndustrialAssemblyPrint
+  result: AncientBlueprintIndustrialAssembly
+  completetime: 10
+  materials:
+    Steel: 80
+    Glass: 100
+    Paper: 200
+
 - type: latheRecipePack
   id: AncientSmelterStatic
   recipes:
@@ -241,6 +301,10 @@
   - AncientSheetGlass
   - AncientSheetSilver
   - AncientSheetGold
+  - AncientSheetPlasma
+  - AncientSheetLithium
+  - AncientSheetCopper
+  - AncientArmorPlateEconomy1
   - AncientSheetPlastic
 
 - type: latheRecipePack
@@ -248,6 +312,8 @@
   recipes:
   - AncientSheetPaperFromPlastic
   - AncientCableApc
+  - AncientCableHv
+  - AncientComponentBrickEconomy1
   - AncientScrewdriver
   - AncientWrench
   - AncientCrowbar
@@ -277,6 +343,7 @@
   - AncientBlueprintArtifactAnalyzerPrint
   - AncientBlueprintAnalysisComputerPrint
   - AncientBlueprintApePrint
+  - AncientBlueprintIndustrialAssemblyPrint
 
 - type: latheRecipePack
   id: AncientCircuitImprinterScienceLab

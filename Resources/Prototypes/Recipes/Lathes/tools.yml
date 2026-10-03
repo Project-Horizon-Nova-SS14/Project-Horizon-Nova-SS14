@@ -57,17 +57,27 @@
   - Parts
   completetime: 0.1
   materials:
-    Steel: 30
+    Copper: 30
 
 - type: latheRecipe
-  parent: CableStack
   id: CableMVStack
   result: CableMVStack1
+  categories:
+  - Parts
+  completetime: 0.1
+  materials:
+    Steel: 30
+    Silver: 30
 
 - type: latheRecipe
-  parent: CableStack
   id: CableHVStack
   result: CableHVStack1
+  categories:
+  - Parts
+  completetime: 0.1
+  materials:
+    Gold: 30
+    Silver: 30
 
 - type: latheRecipe
   parent: BaseToolRecipe

@@ -140,3 +140,17 @@
   - type: Tag
     tags:
     - BlueprintAncientCircuitImprinter
+
+- type: entity
+  parent: BaseBlueprint
+  id: AncientBlueprintIndustrialAssembly
+  name: промышленная сборка
+  description: Древний чертёж. Вставляется в древний принтер схем. Открывает печать плат промышленных прессов (плиты и электроника).
+  components:
+  - type: Blueprint
+    providedRecipes:
+    - IndustrialPressEconomyPlatesMachineCircuitboard
+    - IndustrialPressEconomyElectronicsMachineCircuitboard
+  - type: Tag
+    tags:
+    - BlueprintAncientCircuitImprinter
