@@ -16,4 +16,4 @@
   name: stack-anomalite
   icon: _NF/Objects/Specific/Pirate/pirate_doubloon.rsi
   spawn: MaterialAnomalite1
-  maxCount: 10
+  maxCount: 100
