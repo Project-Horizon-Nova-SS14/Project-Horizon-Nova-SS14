@@ -11,7 +11,7 @@
     WallRockChromite: WallRockChromiteTin
     WallRockSand: WallRockSandTin
     WallRockSnow: WallRockSnowTin
-  maxCount: 12
+  maxCount: 100
   minGroupSize: 2
   maxGroupSize: 5
   radius: 4
@@ -24,7 +24,7 @@
     WallRockBasalt: WallRockBasaltQuartz
     WallRockChromite: WallRockChromiteQuartz
     WallRockSnow: WallRockSnowQuartz
-  maxCount: 8
+  maxCount: 50
   minGroupSize: 2
   maxGroupSize: 4
   radius: 4
@@ -38,7 +38,7 @@
     WallRockChromite: WallRockChromiteCoal
     WallRockSand: WallRockSandCoal
     WallRockSnow: WallRockSnowCoal
-  maxCount: 12
+  maxCount: 100
   minGroupSize: 2
   maxGroupSize: 5
   radius: 4
@@ -52,7 +52,7 @@
     WallRockChromite: WallRockChromiteSalt
     WallRockSand: WallRockSandSalt
     WallRockSnow: WallRockSnowSalt
-  maxCount: 10
+  maxCount: 30
   minGroupSize: 2
   maxGroupSize: 4
   radius: 4
@@ -66,7 +66,7 @@
     WallRockChromite: WallRockChromiteGold
     WallRockSand: WallRockSandGold
     WallRockSnow: WallRockSnowGold
-  maxCount: 6
+  maxCount: 45
   minGroupSize: 1
   maxGroupSize: 3
   radius: 4
@@ -80,7 +80,7 @@
     WallRockChromite: WallRockChromiteSilver
     WallRockSand: WallRockSandSilver
     WallRockSnow: WallRockSnowSilver
-  maxCount: 6
+  maxCount: 45
   minGroupSize: 1
   maxGroupSize: 3
   radius: 4
@@ -94,7 +94,7 @@
     WallRockChromite: WallRockChromitePlasma
     WallRockSand: WallRockSandPlasma
     WallRockSnow: WallRockSnowPlasma
-  maxCount: 5
+  maxCount: 30
   minGroupSize: 1
   maxGroupSize: 3
   radius: 4
@@ -108,7 +108,7 @@
     WallRockChromite: WallRockChromiteUranium
     WallRockSand: WallRockSandUranium
     WallRockSnow: WallRockSnowUranium
-  maxCount: 5
+  maxCount: 30
   minGroupSize: 1
   maxGroupSize: 3
   radius: 4
@@ -122,7 +122,7 @@
     WallRockChromite: WallRockChromiteDiamond
     WallRockSand: WallRockSandDiamond
     WallRockSnow: WallRockSnowDiamond
-  maxCount: 2
+  maxCount: 5
   minGroupSize: 1
   maxGroupSize: 2
   radius: 4
@@ -137,7 +137,7 @@
     WallRockChromite: WallRockChromiteLithium
     WallRockSand: WallRockSandLithium
     WallRockSnow: WallRockSnowLithium
-  maxCount: 12
+  maxCount: 45
   minGroupSize: 3
   maxGroupSize: 6
   radius: 4
@@ -151,7 +151,7 @@
     WallRockChromite: WallRockChromiteCopper
     WallRockSand: WallRockSandCopper
     WallRockSnow: WallRockSnowCopper
-  maxCount: 15
+  maxCount: 45
   minGroupSize: 4
   maxGroupSize: 8
   radius: 4
@@ -165,9 +165,9 @@
     WallRockChromite: WallRockChromiteArtifactFragment
     WallRockSand: WallRockSandArtifactFragment
     WallRockSnow: WallRockSnowArtifactFragment
-  maxCount: 2
-  minGroupSize: 1
-  maxGroupSize: 2
+  maxCount: 30
+  minGroupSize: 2
+  maxGroupSize: 4
   radius: 4
 
 - type: biomeMarkerLayer
@@ -177,7 +177,7 @@
     WallRock: WallRockMagmite
     WallRockBasalt: WallRockBasaltMagmite
     WallRockChromite: WallRockChromiteMagmite
-  maxCount: 1
+  maxCount: 3
   minGroupSize: 1
   maxGroupSize: 1
   radius: 4

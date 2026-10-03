@@ -463,13 +463,13 @@ public sealed partial class BiomeSystem : SharedBiomeSystem
         else if (pendingCount <= 60)
             pendingFactor = 1.10f;
 
-        if (pendingMarkers >= 2600)
+        if (pendingMarkers >= 6500)
             pendingFactor *= 0.45f;
-        else if (pendingMarkers >= 1800)
+        else if (pendingMarkers >= 4500)
             pendingFactor *= 0.60f;
-        else if (pendingMarkers >= 1000)
+        else if (pendingMarkers >= 2500)
             pendingFactor *= 0.78f;
-        else if (pendingMarkers >= 700)
+        else if (pendingMarkers >= 1750)
             pendingFactor *= 0.90f;
 
         var factor = Math.Clamp(motionFactor * pendingFactor, 0.2f, 1.35f);
@@ -506,20 +506,20 @@ public sealed partial class BiomeSystem : SharedBiomeSystem
             decalBudget = Math.Min(decalBudget, 6);
         }
 
-        if (pendingMarkers >= 2200)
+        if (pendingMarkers >= 5500)
         {
             chunkBudget = Math.Min(chunkBudget, 1);
             markerBudget = Math.Min(markerBudget, 1);
             entityBudget = Math.Min(entityBudget, 6);
             decalBudget = Math.Min(decalBudget, 6);
         }
-        else if (pendingMarkers >= 1400)
+        else if (pendingMarkers >= 3500)
         {
             markerBudget = Math.Min(markerBudget, 1);
             entityBudget = Math.Min(entityBudget, 5);
             decalBudget = Math.Min(decalBudget, 5);
         }
-        else if (pendingMarkers >= 900)
+        else if (pendingMarkers >= 2250)
         {
             markerBudget = Math.Min(markerBudget, 2);
         }
@@ -804,10 +804,10 @@ public sealed partial class BiomeSystem : SharedBiomeSystem
         if (isStargate)
         {
             var hardPauseLatched = _stargateHardPauseMaps.Contains(gridUid);
-            var shouldEnterHardPause = pendingMarkersTotal >= 1750 ||
+            var shouldEnterHardPause = pendingMarkersTotal >= 4500 ||
                                        pendingDynamicSpawns >= 700 ||
-                                       (motion >= 0.90f && pendingMarkersTotal >= 800);
-            var canExitHardPause = pendingMarkersTotal <= 1300 &&
+                                       (motion >= 0.90f && pendingMarkersTotal >= 2000);
+            var canExitHardPause = pendingMarkersTotal <= 3500 &&
                                    pendingDynamicSpawns <= 250 &&
                                    motion <= 0.30f;
 
@@ -822,11 +822,11 @@ public sealed partial class BiomeSystem : SharedBiomeSystem
                 markerChunkBudget = 0;
             }
 
-            if (pendingMarkersTotal >= 2400)
+            if (pendingMarkersTotal >= 6000)
                 markerChunkBudget = 0;
-            else if (pendingMarkersTotal >= 1600)
+            else if (pendingMarkersTotal >= 4000)
                 markerChunkBudget = Math.Min(markerChunkBudget, 1);
-            else if (pendingMarkersTotal >= 900)
+            else if (pendingMarkersTotal >= 2250)
                 markerChunkBudget = Math.Min(markerChunkBudget, Math.Max(1, markerChunkBudget / 2));
 
             if (motion >= 1f)
@@ -839,33 +839,55 @@ public sealed partial class BiomeSystem : SharedBiomeSystem
         if (hardPause)
             return;
 
+        // Budget is spent chunk-first: all layers of one marker chunk are finished before the next chunk is started.
+        // Layer-first order starved the later layers (ores at the end of the list) whenever the budget or the pending caps ran out.
         var idx = 0;
-        var newChunksLeft = markerChunkBudget;
-
+        var pairs = new List<(Vector2i Chunk, int LayerIdx, string Layer)>();
         foreach (var (layer, chunks) in markers)
         {
             idx++;
-            var localIdx = idx;
-
-            const double MarkerRespawnChance = 0.35;
-            var respawnEligible = component.RespawnEligibleMarkers;
-            var toProcess = new List<Vector2i>();
             foreach (var chunk in chunks)
             {
                 if (loadedMarkers.TryGetValue(layer, out var alreadyLoaded) && alreadyLoaded.Contains(chunk))
                     continue;
 
-                if (markerChunkBudget > 0 && newChunksLeft <= 0)
-                    continue;
+                pairs.Add((chunk, idx, layer));
+            }
+        }
 
-                toProcess.Add(chunk);
-                newChunksLeft--;
+        pairs.Sort((a, b) =>
+        {
+            var c = a.Chunk.X.CompareTo(b.Chunk.X);
+            if (c != 0)
+                return c;
+            c = a.Chunk.Y.CompareTo(b.Chunk.Y);
+            return c != 0 ? c : a.LayerIdx.CompareTo(b.LayerIdx);
+        });
+
+        if (markerChunkBudget > 0 && pairs.Count > markerChunkBudget)
+            pairs.RemoveRange(markerChunkBudget, pairs.Count - markerChunkBudget);
+
+        var layerGroups = new SortedDictionary<int, (string Layer, List<Vector2i> Chunks)>();
+        foreach (var (chunk, layerIdx, layer) in pairs)
+        {
+            if (!layerGroups.TryGetValue(layerIdx, out var group))
+            {
+                group = (layer, new List<Vector2i>());
+                layerGroups[layerIdx] = group;
             }
 
-            if (toProcess.Count == 0)
-                continue;
+            group.Chunks.Add(chunk);
+        }
 
-            var useParallel = !(isStargate && (pendingMarkersTotal >= 600 || motion >= 0.75f || destination?.ProgressiveLoadingActive == true));
+        foreach (var (localIdx, layerGroup) in layerGroups)
+        {
+            var layer = layerGroup.Layer;
+            var toProcess = layerGroup.Chunks;
+
+            const double MarkerRespawnChance = 0.35;
+            var respawnEligible = component.RespawnEligibleMarkers;
+
+            var useParallel = !(isStargate && (pendingMarkersTotal >= 1500 || motion >= 0.75f || destination?.ProgressiveLoadingActive == true));
             void ProcessChunk(Vector2i chunk)
             {
                 bool isRespawnEligible;

@@ -80,10 +80,10 @@ public sealed class StargatePlanetGeneratorSystem : EntitySystem
         if (presetId == null || !_protoManager.TryIndex<StargatePlanetPresetPrototype>(presetId, out var preset))
             return;
 
-        _ = RunAsyncPlanetGen(ent.Owner, grid, preset, seed, origin, random);
+        RunPlanetGen(ent.Owner, grid, preset, seed, origin, random);
     }
 
-    private async Task RunAsyncPlanetGen(
+    private void RunPlanetGen(
         EntityUid mapUid,
         MapGridComponent grid,
         StargatePlanetPresetPrototype preset,
@@ -93,7 +93,8 @@ public sealed class StargatePlanetGeneratorSystem : EntitySystem
     {
         try
         {
-            var dungeons = await GenerateDungeonsAsync(mapUid, grid, preset, preset.Biome[0].Id, origin, seed, random, useExpeditionPool: false);
+            // Данжи на обычных старгейтах отключены; в экспедициях они по-прежнему генерируются.
+            var dungeons = new List<Dungeon>();
 
             if (!TryComp<MapGridComponent>(mapUid, out var gridAfter))
                 return;
