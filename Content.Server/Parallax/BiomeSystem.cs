@@ -718,9 +718,20 @@ public sealed partial class BiomeSystem : SharedBiomeSystem
                     break;
                 if (!component.LoadedEntities.TryGetValue(chunk, out var loadedEntities))
                     continue;
+                component.ModifiedTiles.TryGetValue(chunk, out var modifiedPending);
                 for (var i = list.Count - 1; i >= 0 && entityBudgetLeft > 0; i--)
                 {
                     var (indices, prototype) = list[i];
+
+                    // The tile may have been taken (e.g. by an ore vein from a marker layer) while this entity was waiting for budget.
+                    // Spawning the biome entity now would stack a plain rock on top of the vein.
+                    if (modifiedPending != null && modifiedPending.Contains(indices) ||
+                        _mapSystem.GetAnchoredEntitiesEnumerator(gridUid, grid, indices).MoveNext(out _))
+                    {
+                        list.RemoveAt(i);
+                        continue;
+                    }
+
                     var ent = Spawn(prototype, _mapSystem.GridTileToLocal(gridUid, grid, indices));
                     if (_xformQuery.TryGetComponent(ent, out var xform) && !xform.Anchored)
                         _transform.AnchorEntity((ent, xform), (gridUid, grid), indices);
