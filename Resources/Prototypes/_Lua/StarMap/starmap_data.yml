@@ -11,6 +11,7 @@
         - CelestialBodySpace
         - BackgroundPlanetSpace
       visibleCompanies: [ Nanotrasen, Security, CentComm, LuaTech ]
+      visibleToAll: true
 
     - id: CentCom
       name: Central Command
@@ -37,7 +38,6 @@
         - BackgroundPlanetSpace
       autoStart: true
       defaultGamePreset: LuaAdventure
-      requiredGamePresets: [ LuaAdventure ]
       parallaxPool: [ MercenaryPlanet, LuaDarkSpace, LuaSpace, AspidParallax, BagelStation, CoreStation, OriginStation, TrainStation, KettleStation, Sky, Asteroids, Default]
       deadDropEnabled: true
       deadDropCount: 8

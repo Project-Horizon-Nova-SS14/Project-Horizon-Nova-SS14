@@ -1,5 +1,4 @@
 [game]
-asteroid_sector_enabled = false
 # Straight in-game baby
 lobbyenabled = false
 # Frontier: special map
