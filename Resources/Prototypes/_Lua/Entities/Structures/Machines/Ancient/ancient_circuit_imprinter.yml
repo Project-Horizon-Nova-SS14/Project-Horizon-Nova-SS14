@@ -29,6 +29,7 @@
     containers:
     - blueprint
   - type: Lathe
+    timeMultiplier: 0.5
     producingSound: /Audio/Machines/circuitprinter.ogg
     idleState: perservedimprinter
     runningState: perservedimprinter

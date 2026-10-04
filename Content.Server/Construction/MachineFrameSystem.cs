@@ -19,6 +19,7 @@ public sealed class MachineFrameSystem : EntitySystem
     [Dependency] private readonly StackSystem _stack = default!;
     [Dependency] private readonly ConstructionSystem _construction = default!;
     [Dependency] private readonly SharedPopupSystem _popupSystem = default!;
+    [Dependency] private readonly IPrototypeManager _prototype = default!; // Horizon
 
     public override void Initialize()
     {
@@ -444,5 +445,51 @@ public sealed class MachineFrameSystem : EntitySystem
 
         var board = component.BoardContainer.ContainedEntities[0];
         args.PushMarkup(Loc.GetString("machine-frame-component-on-examine-label", ("board", Name(board))));
+
+        PushInsertedParts(component, args); // Horizon
     }
+
+    // Horizon: show what has already been inserted into the frame and how much is still required
+    private void PushInsertedParts(MachineFrameComponent component, ExaminedEvent args)
+    {
+        var entries = new List<(int Inserted, int Required, string Name)>();
+
+        foreach (var (part, required) in component.Requirements)
+        {
+            if (component.Progress.GetValueOrDefault(part) is var inserted and > 0)
+                entries.Add((inserted, required, Loc.GetString(_prototype.Index(part).Name)));
+        }
+
+        foreach (var (material, required) in component.MaterialRequirements)
+        {
+            if (component.MaterialProgress.GetValueOrDefault(material) is var inserted and > 0)
+                entries.Add((inserted, required, _prototype.Index(_prototype.Index(material).Spawn).Name));
+        }
+
+        foreach (var (compName, info) in component.ComponentRequirements)
+        {
+            if (component.ComponentProgress.GetValueOrDefault(compName) is var inserted and > 0)
+                entries.Add((inserted, info.Amount, _construction.GetExamineName(info)));
+        }
+
+        foreach (var (tagName, info) in component.TagRequirements)
+        {
+            if (component.TagProgress.GetValueOrDefault(tagName) is var inserted and > 0)
+                entries.Add((inserted, info.Amount, _construction.GetExamineName(info)));
+        }
+
+        if (entries.Count == 0)
+            return;
+
+        args.PushMarkup(Loc.GetString("machine-frame-component-on-examine-inserted-label"));
+
+        foreach (var (inserted, required, name) in entries)
+        {
+            args.PushMarkup(Loc.GetString("machine-frame-component-on-examine-inserted-entry",
+                ("inserted", inserted),
+                ("required", required),
+                ("elementName", name)));
+        }
+    }
+    // End Horizon
 }

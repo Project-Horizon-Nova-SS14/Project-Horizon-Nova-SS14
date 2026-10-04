@@ -1,0 +1,27 @@
+- type: entity
+  id: IndustrialFurnaceEconomyCircuitboard
+  parent: BaseMachineCircuitboard
+  name: industrial arc furnace machine board
+  description: A machine printed circuit board for an industrial arc furnace.
+  components:
+  - type: Sprite
+    state: engineering
+  - type: MachineBoard
+    flatpackable: false
+    prototype: IndustrialFurnaceEconomy
+    requirements:
+      Manipulator: 4
+    stackRequirements:
+      CableHV: 10
+    tagRequirements:
+      ArmorPlateEconomy3:
+        amount: 2
+        defaultPrototype: ArmorPlateEconomy3
+      ElectromagnetEconomy1:
+        amount: 4
+        defaultPrototype: ElectromagnetEconomy1
+
+- type: latheRecipe
+  parent: BaseGoldCircuitboardRecipe
+  id: IndustrialFurnaceEconomyCircuitboard
+  result: IndustrialFurnaceEconomyCircuitboard

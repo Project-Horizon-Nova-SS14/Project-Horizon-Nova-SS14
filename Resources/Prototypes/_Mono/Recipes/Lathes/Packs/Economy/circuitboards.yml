@@ -3,6 +3,7 @@
   recipes:
   - CentrifugeLatheMiniCircuitboard
   - IndustrialFurnaceEconomyCompactCircuitboard
+  - IndustrialFurnaceEconomyCircuitboard # Horizon
   - PrecisionAssemblerEconomyCompactCircuitboard
   - IndustrialPressEconomyElectronicsMachineCircuitboard
   - IndustrialPressEconomyPlatesMachineCircuitboard

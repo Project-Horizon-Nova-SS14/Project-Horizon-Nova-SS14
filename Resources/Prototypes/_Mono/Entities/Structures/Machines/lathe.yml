@@ -306,6 +306,8 @@
         - MachineMask
         layer:
         - MachineLayer
+  - type: Machine # Horizon
+    board: IndustrialFurnaceEconomyCircuitboard
   - type: Lathe
     timeMultiplier: 0.2
     reagentOutputSlotId: beaker_slot

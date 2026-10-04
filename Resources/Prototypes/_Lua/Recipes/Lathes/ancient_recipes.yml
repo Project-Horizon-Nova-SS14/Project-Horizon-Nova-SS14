@@ -88,8 +88,8 @@
   result: CableHVStack1
   completetime: 3
   materials:
-    Gold: 300
-    Silver: 300
+    Gold: 150
+    Silver: 150
 
 - type: latheRecipe
   id: AncientComponentBrickEconomy1
@@ -320,6 +320,7 @@
   - AncientWirecutter
   - AncientPickaxe
   - AncientFlashlight
+  - Beaker
   - AnomalyScanner
   - NodeScanner
   - Multitool

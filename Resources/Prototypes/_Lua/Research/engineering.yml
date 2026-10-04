@@ -1141,6 +1141,7 @@
   cost: 20000
   recipeUnlocks:
   - IndustrialFurnaceEconomyCompactCircuitboard
+  - IndustrialFurnaceEconomyCircuitboard # Horizon
   - PrecisionAssemblerEconomyCompactCircuitboard
   technologyPrerequisites:
   - UniversalMaterialResearchT2

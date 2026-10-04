@@ -34,6 +34,7 @@
       - RawMaterial
       - Ingot
   - type: Lathe
+    timeMultiplier: 0.5
     idleState: perservedserver
     runningState: perservedserver
     staticPacks:

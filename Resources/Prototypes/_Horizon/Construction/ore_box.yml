@@ -1,0 +1,37 @@
+- type: constructionGraph
+  id: HorizonOreBox
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: orebox
+      steps:
+      - material: WoodPlank
+        amount: 10
+        doAfter: 5
+
+  - node: orebox
+    entity: NFMagnetBoxOre
+    edges:
+    - to: start
+      steps:
+      - tool: Prying
+        doAfter: 5
+      completed:
+      - !type:SpawnPrototype
+        prototype: MaterialWoodPlank1
+        amount: 10
+      - !type:EmptyAllContainers
+      - !type:DeleteEntity
+
+- type: construction
+  id: HorizonOreBox
+  graph: HorizonOreBox
+  startNode: start
+  targetNode: orebox
+  category: construction-category-storage
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+  - !type:TileNotBlocked

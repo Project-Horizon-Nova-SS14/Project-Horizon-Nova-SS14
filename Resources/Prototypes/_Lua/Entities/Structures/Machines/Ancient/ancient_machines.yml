@@ -20,6 +20,7 @@
       tags:
         - Ore
   - type: Lathe
+    timeMultiplier: 0.5
     idleState: perservedproto
     runningState: perservedproto
     staticPacks:
@@ -84,6 +85,7 @@
         - RawMaterial
         - Ingot
   - type: Lathe
+    timeMultiplier: 0.5
     idleState: perservedlathe
     runningState: perservedlathe
     staticPacks:
