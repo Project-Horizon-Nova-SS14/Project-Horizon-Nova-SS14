@@ -1,0 +1,22 @@
+- type: reaction
+  id: LithiumHydroxide
+  reactants:
+    Water:
+      amount: 1
+    Lithium:
+      amount: 1
+  products:
+    LithiumHydroxide: 1
+
+# Reverse of WeldingFuelBreakdown (centrifuge): 10 welding fuel -> 5 ethanol, 3 hydrogen, 2 sulfur.
+- type: reaction
+  id: WeldingFuel
+  reactants:
+    Ethanol:
+      amount: 5
+    Hydrogen:
+      amount: 3
+    Sulfur:
+      amount: 2
+  products:
+    WeldingFuel: 10
