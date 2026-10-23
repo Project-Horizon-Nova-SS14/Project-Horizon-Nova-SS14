@@ -153,10 +153,8 @@ public sealed partial class ResearchSystem
             return;
 
         // If the client and the server are no longer on the same grid, disconnect them.
-        if (!TryComp(ent, out TransformComponent? clientXform)
-            || clientXform.GridUid == null
-            || !TryComp(ent.Comp.Server, out TransformComponent? serverXform)
-            || clientXform.GridUid != serverXform.GridUid)
+        // Horizon: the RnD array is reached across grids, see CanReachServer
+        if (!CanReachServer(ent, ent.Comp.Server.Value))
         {
             UnregisterClient(ent, ent.Comp);
         }

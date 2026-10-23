@@ -1,5 +1,6 @@
 using System.Linq;
 using Content.Server.Power.EntitySystems;
+using Content.Shared._Horizon.Research; // Horizon
 using Content.Shared.Research.Components;
 
 namespace Content.Server.Research.Systems;
@@ -70,14 +71,13 @@ public sealed partial class ResearchSystem
 
         if (serverComponent.Clients.Contains(client))
             return;
-        if (!IsClientServerTypeCompatible(clientComponent, serverComponent))
+        if (!IsClientServerTypeCompatible(clientComponent, serverComponent)
+            && !HasComp<RndArrayComponent>(server)) // Horizon: the RnD array serves every faction
             return;
 
         // Frontier: check grids
-        if (!TryComp(client, out TransformComponent? clientXform)
-            || !TryComp(server, out TransformComponent? serverXform)
-            || clientXform.GridUid == null
-            || clientXform.GridUid != serverXform.GridUid) // server null check implicit
+        // Horizon: the RnD array is reached across grids, see CanReachServer
+        if (!CanReachServer(client, server))
             return;
         // End Frontier
 
@@ -216,8 +216,7 @@ public sealed partial class ResearchSystem
         foreach (var client in clientList)
         {
             if (serverGrid == null
-                || !TryComp(client, out TransformComponent? clientXform)
-                || clientXform.GridUid != serverGrid)
+                || !CanReachServer(client, ent)) // Horizon: the RnD array is reached across grids
             {
                 UnregisterClient(client, ent, serverComponent: ent.Comp, dirtyServer: false);
                 clientsRemoved = true;

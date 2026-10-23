@@ -47,22 +47,6 @@
       - NFAdvancedParts
   recipeUnlocks: []
 - type: technology
-  id: LuaDisciplinePlaceholderArsenalMercenary
-  name: nf-research-discipline-arsenal-mercenary
-  entityIcon: LuaResearchIconArsenalMercenary
-  discipline: NFArsenal
-  factions:
-  - Nanotrasen
-  tier: 1
-  cost: 15000
-  position: -20, 3
-  factionOverrides:
-    Nanotrasen:
-      position: -1.422, -0
-      technologyPrerequisites:
-      - NFAdvancedParts
-  recipeUnlocks: []
-- type: technology
   id: LuaDisciplinePlaceholderSalvage
   name: nf-research-discipline-salvage
   entityIcon: LuaResearchIconSalvage

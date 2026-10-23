@@ -99,6 +99,11 @@ namespace Content.Server.Research.Systems
         {
             ClientLookup.Clear();
 
+            // Horizon: while there is an RnD array, it is the only server
+            if (TryGetArrayServers(client, ClientLookup))
+                return ClientLookup;
+            // End Horizon
+
             var clientXform = Transform(client);
             if (clientXform.GridUid is not { } grid)
                 return ClientLookup;

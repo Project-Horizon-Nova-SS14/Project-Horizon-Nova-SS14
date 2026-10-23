@@ -169,7 +169,6 @@
   name: nf-research-technology-hardsuits-experimental-industrial
   entityIcon: ClothingOuterHardsuitMaximPrototype
   discipline: NFScience
-  secondaryDiscipline: NFArsenal
   factions:
   - Nanotrasen
   tier: 1
@@ -178,7 +177,6 @@
   - ClothingOuterHardsuitMaximPrototype
   technologyPrerequisites:
   - NFHardsuitsExperimentalProtection
-  - NFHardsuitsArmored
   position: -3.341, 6.582
   factionOverrides:
     Nanotrasen:
@@ -222,7 +220,7 @@
     Nanotrasen:
       position: -4.622, 2.844
       technologyPrerequisites:
-      - LuaAdvancedSalvageJetBoots
+      - NFBasicMagnetsTech
 - type: technology
   id: NFQuantumFiberWeaving
   name: nf-research-technology-quantum-fiber-weaving
@@ -298,13 +296,13 @@
   recipeUnlocks:
   - ClothingEyesNightVisionGoggles
   technologyPrerequisites:
-  - NFHardsuitsArmoredAdvanced
+  - LuaDisciplinePlaceholderScience
   position: -6.162, 9.588
   factionOverrides:
     Nanotrasen:
       position: -4.622, 0
       technologyPrerequisites:
-      - NFHardsuitsArmoredAdvanced
+      - LuaDisciplinePlaceholderScience
 - type: technology
   id: ThermalVisionTech
   name: research-technology-thermal-vision

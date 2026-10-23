@@ -10,7 +10,7 @@
       - id: MachineAnomalyVesselFlatpack
       - id: CircuitImprinterFlatpack
       - id: BlueprintLithographFlatpack
-      - id: ResearchAndDevelopmentServerFlatpack
+      # - id: ResearchAndDevelopmentServerFlatpack # Horizon: the RnD array replaces the old servers
       - id: ComputerResearchAndDevelopmentFlatpack
       - id: MachineArtifactAnalyzerFlatpack
       - id: AutolatheFlatpack

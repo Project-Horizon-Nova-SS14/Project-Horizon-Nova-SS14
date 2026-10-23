@@ -117,7 +117,7 @@
     Nanotrasen:
       position: 7.467, 4.267
       technologyPrerequisites:
-      - NFBasicShuttleArmament
+      - ShuttlePowerCage
 - type: technology
   id: ShuttleGrenade
   name: research-technology-shuttle-grenade

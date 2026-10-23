@@ -106,12 +106,12 @@
   - ResearchComputerUsspCircuitboard
   - ResearchComputerTSFMCCircuitboard
   - ResearchComputerMercCircuitboard
-  - ResearchAndDevelopmentServerMachineCircuitboard
-  - ResearchAndDevelopmentServerSyndicateMachineCircuitboard
-  - ResearchAndDevelopmentServerRoguesMachineCircuitboard
-  - ResearchAndDevelopmentServerUsspMachineCircuitboard
-  - ResearchAndDevelopmentServerTSFMCMachineCircuitboard
-  - ResearchAndDevelopmentServerMercMachineCircuitboard
+  # - ResearchAndDevelopmentServerMachineCircuitboard # Horizon: the RnD array replaces the old servers
+  # - ResearchAndDevelopmentServerSyndicateMachineCircuitboard # Horizon: the RnD array replaces the old servers
+  # - ResearchAndDevelopmentServerRoguesMachineCircuitboard # Horizon: the RnD array replaces the old servers
+  # - ResearchAndDevelopmentServerUsspMachineCircuitboard # Horizon: the RnD array replaces the old servers
+  # - ResearchAndDevelopmentServerTSFMCMachineCircuitboard # Horizon: the RnD array replaces the old servers
+  # - ResearchAndDevelopmentServerMercMachineCircuitboard # Horizon: the RnD array replaces the old servers
 
 - type: latheRecipePack
   id: CameraBoards

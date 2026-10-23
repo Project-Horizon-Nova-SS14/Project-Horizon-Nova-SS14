@@ -1,0 +1,61 @@
+# Protolathe recipes of the RnD network: empty array disks and the boards of the relay and the access point.
+- type: latheRecipePack
+  id: HorizonRndStatic
+  recipes:
+  - HorizonRndDiskEngineering
+  - HorizonRndDiskMedical
+  - HorizonRndDiskSalvage
+  - HorizonRndDiskScience
+  - HorizonRndDiskService
+  - HorizonRndDiskShiparmory
+  - HorizonRndRelayMachineCircuitboard
+  - HorizonRndAccessPointMachineCircuitboard
+
+- type: latheRecipe
+  abstract: true
+  id: HorizonRndDiskRecipe
+  completetime: 4
+  materials:
+    Steel: 100
+    Plastic: 300
+    Glass: 100
+
+- type: latheRecipe
+  parent: HorizonRndDiskRecipe
+  id: HorizonRndDiskEngineering
+  result: HorizonRndDiskEngineering
+
+- type: latheRecipe
+  parent: HorizonRndDiskRecipe
+  id: HorizonRndDiskMedical
+  result: HorizonRndDiskMedical
+
+- type: latheRecipe
+  parent: HorizonRndDiskRecipe
+  id: HorizonRndDiskSalvage
+  result: HorizonRndDiskSalvage
+
+- type: latheRecipe
+  parent: HorizonRndDiskRecipe
+  id: HorizonRndDiskScience
+  result: HorizonRndDiskScience
+
+- type: latheRecipe
+  parent: HorizonRndDiskRecipe
+  id: HorizonRndDiskService
+  result: HorizonRndDiskService
+
+- type: latheRecipe
+  parent: HorizonRndDiskRecipe
+  id: HorizonRndDiskShiparmory
+  result: HorizonRndDiskShiparmory
+
+- type: latheRecipe
+  parent: BaseCircuitboardRecipe
+  id: HorizonRndRelayMachineCircuitboard
+  result: HorizonRndRelayMachineCircuitboard
+
+- type: latheRecipe
+  parent: BaseCircuitboardRecipe
+  id: HorizonRndAccessPointMachineCircuitboard
+  result: HorizonRndAccessPointMachineCircuitboard

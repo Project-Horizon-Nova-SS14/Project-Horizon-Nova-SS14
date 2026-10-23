@@ -1,0 +1,175 @@
+# The RnD array: the one research server of the game, placed on the station map. Every discipline has its own disk
+# slot, and the technologies of a discipline exist only while a working disk is in its slot. The rack can be opened
+# (alt verb or the interface) only while it is unlocked with research access. Destroying it destroys the disks.
+- type: entity
+  id: HorizonRndArray
+  parent: BaseMachinePowered
+  name: RnD array
+  description: The research server rack holding the disks with all researched technologies. Machines elsewhere reach it through RnD relays.
+  components:
+  - type: Sprite
+    sprite: _Horizon/Structures/Machines/rnd_array.rsi
+    snapCardinals: true
+    layers:
+    - state: rack
+    - state: lights
+      shader: unshaded
+      visible: false
+      map: [ "enum.PowerDeviceVisualLayers.Powered" ]
+    - state: disk1
+      map: [ "disk1" ]
+      visible: false
+    - state: disk1-led
+      shader: unshaded
+      map: [ "disk1-led" ]
+      visible: false
+    - state: disk2
+      map: [ "disk2" ]
+      visible: false
+    - state: disk2-led
+      shader: unshaded
+      map: [ "disk2-led" ]
+      visible: false
+    - state: disk3
+      map: [ "disk3" ]
+      visible: false
+    - state: disk3-led
+      shader: unshaded
+      map: [ "disk3-led" ]
+      visible: false
+    - state: disk4
+      map: [ "disk4" ]
+      visible: false
+    - state: disk4-led
+      shader: unshaded
+      map: [ "disk4-led" ]
+      visible: false
+    - state: disk5
+      map: [ "disk5" ]
+      visible: false
+    - state: disk5-led
+      shader: unshaded
+      map: [ "disk5-led" ]
+      visible: false
+    - state: disk6
+      map: [ "disk6" ]
+      visible: false
+    - state: disk6-led
+      shader: unshaded
+      map: [ "disk6-led" ]
+      visible: false
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.PowerDeviceVisuals.Powered:
+        enum.PowerDeviceVisualLayers.Powered:
+          True: { visible: true }
+          False: { visible: false }
+  - type: PointLight
+    enabled: false
+    castShadows: false
+    radius: 1.2
+    energy: 3.0
+    color: "#b211b2"
+  - type: LitOnPowered
+  - type: ResearchServer
+    serverName: РНД Массив
+  # The disciplines are set by the array from its working disks.
+  - type: TechnologyDatabase
+  - type: ItemSlots
+  - type: RndArray
+    slots:
+    - id: engineering
+      discipline: NFEngineering
+      diskLayer: disk1
+      ledLayer: disk1-led
+      slot:
+        name: rnd-array-slot-engineering
+        startingItem: HorizonRndDiskEngineering
+        locked: true
+        whitelist:
+          components:
+          - RndDisk
+    - id: medical
+      discipline: NFMedical
+      diskLayer: disk2
+      ledLayer: disk2-led
+      slot:
+        name: rnd-array-slot-medical
+        startingItem: HorizonRndDiskMedical
+        locked: true
+        whitelist:
+          components:
+          - RndDisk
+    - id: salvage
+      discipline: NFSalvage
+      diskLayer: disk3
+      ledLayer: disk3-led
+      slot:
+        name: rnd-array-slot-salvage
+        startingItem: HorizonRndDiskSalvage
+        locked: true
+        whitelist:
+          components:
+          - RndDisk
+    - id: science
+      discipline: NFScience
+      diskLayer: disk4
+      ledLayer: disk4-led
+      slot:
+        name: rnd-array-slot-science
+        startingItem: HorizonRndDiskScience
+        locked: true
+        whitelist:
+          components:
+          - RndDisk
+    - id: service
+      discipline: NFService
+      diskLayer: disk5
+      ledLayer: disk5-led
+      slot:
+        name: rnd-array-slot-service
+        startingItem: HorizonRndDiskService
+        locked: true
+        whitelist:
+          components:
+          - RndDisk
+    - id: shiparmory
+      discipline: Shiparmory
+      diskLayer: disk6
+      ledLayer: disk6-led
+      slot:
+        name: rnd-array-slot-shiparmory
+        startingItem: HorizonRndDiskShiparmory
+        locked: true
+        whitelist:
+          components:
+          - RndDisk
+  - type: ActivatableUI
+    key: enum.RndArrayUiKey.Key
+  - type: UserInterface
+    interfaces:
+      enum.RndArrayUiKey.Key:
+        type: RndArrayBoundUserInterface
+  - type: ApcPowerReceiver
+    powerLoad: 1000
+  - type: Damageable
+    damageContainer: StructuralInorganic
+    damageModifierSet: StructuralMetallic
+  # No container is emptied: the disks are destroyed with the array.
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 600
+      behaviors:
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalBreak
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          SheetSteel1:
+            min: 2
+            max: 4

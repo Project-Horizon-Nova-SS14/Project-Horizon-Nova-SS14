@@ -1,0 +1,115 @@
+# Disks of the RnD array, one kind per discipline. A new disk is empty; it keeps the technologies researched while it
+# is in the slot of its discipline, and breaks after a day of work, losing them.
+- type: entity
+  abstract: true
+  parent: BaseItem
+  id: HorizonRndDiskBase
+  components:
+  - type: EmitSoundOnPickup
+    sound:
+      path: /Audio/_Goobstation/Items/handling/disk_pickup.ogg
+      params:
+        volume: -6
+  - type: EmitSoundOnDrop
+    sound:
+      path: /Audio/_Goobstation/Items/handling/disk_drop.ogg
+      params:
+        volume: -6
+  - type: EmitSoundOnLand
+    sound:
+      path: /Audio/_Goobstation/Items/handling/disk_drop.ogg
+      params:
+        volume: -6
+  - type: Sprite
+    sprite: _Horizon/Objects/Specific/Research/rnd_disk.rsi
+    layers:
+    - state: icon
+    - state: stripes
+  - type: Item
+    size: Tiny
+  - type: StaticPrice
+    price: 150
+
+- type: entity
+  parent: HorizonRndDiskBase
+  id: HorizonRndDiskEngineering
+  name: RnD array disk (engineering)
+  description: A disk for the engineering slot of the RnD array.
+  components:
+  - type: Sprite
+    layers:
+    - state: icon
+    - state: stripes
+      color: "#f0d060"
+  - type: RndDisk
+    discipline: NFEngineering
+
+- type: entity
+  parent: HorizonRndDiskBase
+  id: HorizonRndDiskMedical
+  name: RnD array disk (medical)
+  description: A disk for the medical slot of the RnD array.
+  components:
+  - type: Sprite
+    layers:
+    - state: icon
+    - state: stripes
+      color: "#70b4f0"
+  - type: RndDisk
+    discipline: NFMedical
+
+- type: entity
+  parent: HorizonRndDiskBase
+  id: HorizonRndDiskSalvage
+  name: RnD array disk (salvage)
+  description: A disk for the salvage slot of the RnD array.
+  components:
+  - type: Sprite
+    layers:
+    - state: icon
+    - state: stripes
+      color: "#d29a55"
+  - type: RndDisk
+    discipline: NFSalvage
+
+- type: entity
+  parent: HorizonRndDiskBase
+  id: HorizonRndDiskScience
+  name: RnD array disk (science)
+  description: A disk for the science slot of the RnD array.
+  components:
+  - type: Sprite
+    layers:
+    - state: icon
+    - state: stripes
+      color: "#c070e8"
+  - type: RndDisk
+    discipline: NFScience
+
+- type: entity
+  parent: HorizonRndDiskBase
+  id: HorizonRndDiskService
+  name: RnD array disk (service)
+  description: A disk for the service slot of the RnD array.
+  components:
+  - type: Sprite
+    layers:
+    - state: icon
+    - state: stripes
+      color: "#70d860"
+  - type: RndDisk
+    discipline: NFService
+
+- type: entity
+  parent: HorizonRndDiskBase
+  id: HorizonRndDiskShiparmory
+  name: RnD array disk (ship armory)
+  description: A disk for the ship armory slot of the RnD array.
+  components:
+  - type: Sprite
+    layers:
+    - state: icon
+    - state: stripes
+      color: "#6fa8e0"
+  - type: RndDisk
+    discipline: Shiparmory

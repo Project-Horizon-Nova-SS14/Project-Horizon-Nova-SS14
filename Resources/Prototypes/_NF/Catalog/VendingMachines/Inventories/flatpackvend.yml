@@ -47,6 +47,6 @@
     WeaponShuttleGrapplingTurretFlatpack: 4294967295 # Lua
     # Science
     MachineArtifactAnalyzerFlatpack: 4294967295 # Infinite
-    ResearchAndDevelopmentServerFlatpack: 4294967295 # Infinite
+    # ResearchAndDevelopmentServerFlatpack: 4294967295 # Horizon: the RnD array replaces the old servers
     BlueprintLithographFlatpack: 4294967295 # Infinite
     TeslaGroundingRodFlatpack: 4294967295 # Infinite

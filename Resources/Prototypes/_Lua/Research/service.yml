@@ -133,7 +133,7 @@
   recipeUnlocks:
   - TelecomServerCircuitboard
   technologyPrerequisites:
-  - NFAudioVisualCommunication
+  - NFJournalism
   position: -10.97, -1.959
   factionOverrides:
     Nanotrasen:
@@ -152,7 +152,7 @@
   recipeUnlocks:
   - NFHolopadShipMachineCircuitboard
   technologyPrerequisites:
-  - NFAudioVisualCommunication
+  - NFWirelessAudioVisualCommunication
   position: -11.562, -0.269
   factionOverrides:
     Nanotrasen:
@@ -219,7 +219,7 @@
     Nanotrasen:
       position: -5.689, -2.133
       technologyPrerequisites:
-      - NFAudioVisualCommunication
+      - NFAdvancedEntertainment
 - type: technology
   id: NFPushHorn
   name: nf-research-technology-clowning-utilities

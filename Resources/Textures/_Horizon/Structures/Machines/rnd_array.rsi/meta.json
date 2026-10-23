@@ -1,0 +1,61 @@
+{
+    "version": 1,
+    "license": "CC-BY-SA-3.0",
+    "copyright": "Made for Project Horizon Nova",
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "states": [
+        {
+            "name": "rack"
+        },
+        {
+            "name": "lights",
+            "delays": [
+                [
+                    0.5,
+                    0.5,
+                    0.5,
+                    0.5
+                ]
+            ]
+        },
+        {
+            "name": "disk1"
+        },
+        {
+            "name": "disk1-led"
+        },
+        {
+            "name": "disk2"
+        },
+        {
+            "name": "disk2-led"
+        },
+        {
+            "name": "disk3"
+        },
+        {
+            "name": "disk3-led"
+        },
+        {
+            "name": "disk4"
+        },
+        {
+            "name": "disk4-led"
+        },
+        {
+            "name": "disk5"
+        },
+        {
+            "name": "disk5-led"
+        },
+        {
+            "name": "disk6"
+        },
+        {
+            "name": "disk6-led"
+        }
+    ]
+}

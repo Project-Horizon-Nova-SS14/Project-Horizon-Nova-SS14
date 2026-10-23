@@ -1,0 +1,113 @@
+# The RnD relay links up to five access points to the RnD array, wirelessly and wherever they are.
+- type: entity
+  id: HorizonRndRelay
+  parent: [ BaseMachinePowered, ConstructibleMachine ]
+  name: RnD relay
+  description: Links RnD access points to the RnD array. Every access point takes one of its channels.
+  components:
+  - type: Sprite
+    sprite: Structures/Machines/telecomms.rsi
+    snapCardinals: true
+    layers:
+    - state: telecom-nopower
+    - state: telecom-stripe
+    - state: telecom-on
+      shader: unshaded
+      visible: false
+      map: [ "enum.PowerDeviceVisualLayers.Powered" ]
+    - state: variant-science
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.PowerDeviceVisuals.Powered:
+        enum.PowerDeviceVisualLayers.Powered:
+          True: { visible: true }
+          False: { visible: false }
+  - type: Machine
+    board: HorizonRndRelayMachineCircuitboard
+  - type: RndRelay
+    capacity: 5
+  - type: ActivatableUI
+    key: enum.RndRelayUiKey.Key
+  - type: ActivatableUIRequiresAnchor
+  - type: UserInterface
+    interfaces:
+      enum.RndRelayUiKey.Key:
+        type: RndRelayBoundUserInterface
+  - type: ApcPowerReceiver
+    powerLoad: 500
+
+# The RnD access point gives the research machines of its grid the technologies of the RnD array once it is linked to
+# a relay.
+- type: entity
+  id: HorizonRndAccessPoint
+  parent: [ BaseMachinePowered, ConstructibleMachine ]
+  name: RnD access point
+  description: Gives the research machines of the ship the technologies of the RnD array. Link it to an RnD relay.
+  components:
+  - type: Sprite
+    sprite: Structures/Machines/server.rsi
+    snapCardinals: true
+    layers:
+    - state: server-off
+    - state: server-on
+      visible: false
+      map: [ "enum.PowerDeviceVisualLayers.Powered" ]
+    - state: variant-crew
+    - state: server_o
+      map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.PowerDeviceVisuals.Powered:
+        enum.PowerDeviceVisualLayers.Powered:
+          True: { visible: true }
+          False: { visible: false }
+  - type: WiresPanel
+  - type: WiresVisuals
+  - type: Machine
+    board: HorizonRndAccessPointMachineCircuitboard
+  - type: RndAccessPoint
+  - type: ActivatableUI
+    key: enum.RndAccessPointUiKey.Key
+  - type: ActivatableUIRequiresAnchor
+  - type: UserInterface
+    interfaces:
+      enum.RndAccessPointUiKey.Key:
+        type: RndAccessPointBoundUserInterface
+  - type: ApcPowerReceiver
+    powerLoad: 200
+
+- type: entity
+  id: HorizonRndRelayMachineCircuitboard
+  parent: BaseMachineCircuitboard
+  name: RnD relay machine board
+  description: A machine printed circuit board for an RnD relay.
+  components:
+  - type: Sprite
+    state: science
+  - type: MachineBoard
+    prototype: HorizonRndRelay
+    requirements:
+      Capacitor: 2
+      Manipulator: 1
+    stackRequirements:
+      Steel: 5
+      Glass: 2
+      Cable: 5
+
+- type: entity
+  id: HorizonRndAccessPointMachineCircuitboard
+  parent: BaseMachineCircuitboard
+  name: RnD access point machine board
+  description: A machine printed circuit board for an RnD access point.
+  components:
+  - type: Sprite
+    state: science
+  - type: MachineBoard
+    prototype: HorizonRndAccessPoint
+    requirements:
+      Capacitor: 1
+    stackRequirements:
+      Glass: 1
+      Cable: 2

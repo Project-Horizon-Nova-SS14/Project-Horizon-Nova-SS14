@@ -217,6 +217,7 @@
     staticPacks:
     - NFChemistryBasicStatic # Frontier
     - NFSurgeryBasicStatic # Frontier
+    - HorizonRndStatic # Horizon
     dynamicPacks:
     - LuaService # Lua
     - LuaEngineering # Lua
