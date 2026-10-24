@@ -57,3 +57,7 @@ rnd-access-point-ui-free = { $free }/{ $capacity } free
 rnd-access-point-ui-connect = Connect
 rnd-access-point-relay-offline = The relay is offline.
 rnd-access-point-relay-full = The relay has no free channels.
+
+## Technologies
+
+nf-research-technology-complex-alloys = Complex Alloys

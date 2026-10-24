@@ -14,9 +14,9 @@
     stackRequirements:
       CableHV: 10
     tagRequirements:
-      ArmorPlateEconomy3:
+      ArmorPlateEconomy1:
         amount: 2
-        defaultPrototype: ArmorPlateEconomy3
+        defaultPrototype: ArmorPlateEconomy1
       ElectromagnetEconomy1:
         amount: 4
         defaultPrototype: ElectromagnetEconomy1

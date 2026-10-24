@@ -137,6 +137,25 @@
       technologyPrerequisites:
       - NFExcavation
 - type: technology
+  id: NFComplexAlloys
+  name: nf-research-technology-complex-alloys
+  entityIcon: IndustrialFurnaceEconomy
+  discipline: NFSalvage
+  factions:
+  - Nanotrasen
+  tier: 1
+  cost: 3500
+  recipeUnlocks:
+  - IndustrialFurnaceEconomyCircuitboard
+  technologyPrerequisites:
+  - NFOreProcessor
+  position: 5.3, 6.9
+  factionOverrides:
+    Nanotrasen:
+      position: 0.711, -4.622
+      technologyPrerequisites:
+      - NFOreProcessor
+- type: technology
   id: NFIndustrialOreProcessor
   name: nf-research-technology-industrial-ore-processing
   entityIcon: OreProcessorIndustrial
@@ -148,13 +167,13 @@
   recipeUnlocks:
   - OreProcessorIndustrialMachineCircuitboard
   technologyPrerequisites:
-  - NFOreProcessor
+  - NFComplexAlloys
   position: 5.896, 7.385
   factionOverrides:
     Nanotrasen:
-      position: 0.711, -4.622
+      position: 0.711, -5.689
       technologyPrerequisites:
-      - NFOreProcessor
+      - NFComplexAlloys
 - type: technology
   id: NFSalvageWeapons
   name: nf-research-technology-salvage-weapons
@@ -194,7 +213,7 @@
   position: 3.998, 7.122
   factionOverrides:
     Nanotrasen:
-      position: 0.711, -5.689
+      position: 0.711, -6.756
       technologyPrerequisites:
       - NFIndustrialOreProcessor
 - type: technology
@@ -232,7 +251,7 @@
   position: 5.231, 8.103
   factionOverrides:
     Nanotrasen:
-      position: 0.711, -6.756
+      position: 0.711, -7.822
       technologyPrerequisites:
       - NFMassExcavation
 - type: technology

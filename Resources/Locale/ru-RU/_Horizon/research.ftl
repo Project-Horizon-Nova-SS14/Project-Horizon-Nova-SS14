@@ -88,3 +88,9 @@ ent-HorizonRndRelay5MachineCircuitboard = машинная плата РНД р�
     .desc = Печатная плата для РНД ретранслятора 5-го уровня.
 ent-HorizonRndAccessPointMachineCircuitboard = машинная плата точки доступа РНД
     .desc = Печатная плата для точки доступа РНД.
+
+## Исследования
+
+nf-research-technology-ore-processing = Переработка руды
+nf-research-technology-industrial-ore-processing = Промышленная переработка руды
+nf-research-technology-complex-alloys = Сложные сплавы
