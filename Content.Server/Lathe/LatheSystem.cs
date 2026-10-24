@@ -545,6 +545,11 @@ namespace Content.Server.Lathe
 
         private void OnDatabaseModified(EntityUid uid, LatheComponent component, ref TechnologyDatabaseModifiedEvent args)
         {
+            // Horizon: every lathe is connected to the one RnD data center, so rebuilding all of them is costly.
+            // The state is rebuilt when the window is opened.
+            if (!_uiSys.IsUiOpen(uid, LatheUiKey.Key))
+                return;
+
             UpdateUserInterfaceState(uid, component);
         }
 
@@ -592,6 +597,9 @@ namespace Content.Server.Lathe
 
         private void OnResearchRegistrationChanged(EntityUid uid, LatheComponent component, ref ResearchRegistrationChangedEvent args)
         {
+            if (!_uiSys.IsUiOpen(uid, LatheUiKey.Key)) // Horizon: see OnDatabaseModified
+                return;
+
             UpdateUserInterfaceState(uid, component);
         }
 

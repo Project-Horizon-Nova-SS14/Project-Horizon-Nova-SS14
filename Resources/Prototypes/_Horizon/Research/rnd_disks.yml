@@ -1,10 +1,10 @@
-# RnD storage drives of the data center, one kind per discipline; they look the same and the description names the
-# discipline. A new drive is empty; it keeps the technologies researched while it is in the slot of its discipline,
-# and breaks after a day of work, losing them.
+# The universal RnD storage drive of the data center. A new drive is blank and takes the discipline of the slot it is
+# put in; it keeps the technologies researched while it is there, and breaks after a day of work, losing them.
 - type: entity
-  abstract: true
   parent: BaseItem
-  id: HorizonRndDiskBase
+  id: HorizonRndDisk
+  name: RnD storage drive
+  description: A universal storage drive for the RnD data center. It takes the discipline of the slot it is put in.
   components:
   - type: EmitSoundOnPickup
     sound:
@@ -28,57 +28,4 @@
     size: Tiny
   - type: StaticPrice
     price: 150
-
-- type: entity
-  parent: HorizonRndDiskBase
-  id: HorizonRndDiskEngineering
-  name: RnD storage drive
-  description: "An empty storage drive for the RnD data center. Discipline: engineering."
-  components:
   - type: RndDisk
-    discipline: NFEngineering
-
-- type: entity
-  parent: HorizonRndDiskBase
-  id: HorizonRndDiskMedical
-  name: RnD storage drive
-  description: "An empty storage drive for the RnD data center. Discipline: medical."
-  components:
-  - type: RndDisk
-    discipline: NFMedical
-
-- type: entity
-  parent: HorizonRndDiskBase
-  id: HorizonRndDiskSalvage
-  name: RnD storage drive
-  description: "An empty storage drive for the RnD data center. Discipline: salvage."
-  components:
-  - type: RndDisk
-    discipline: NFSalvage
-
-- type: entity
-  parent: HorizonRndDiskBase
-  id: HorizonRndDiskScience
-  name: RnD storage drive
-  description: "An empty storage drive for the RnD data center. Discipline: science."
-  components:
-  - type: RndDisk
-    discipline: NFScience
-
-- type: entity
-  parent: HorizonRndDiskBase
-  id: HorizonRndDiskService
-  name: RnD storage drive
-  description: "An empty storage drive for the RnD data center. Discipline: service."
-  components:
-  - type: RndDisk
-    discipline: NFService
-
-- type: entity
-  parent: HorizonRndDiskBase
-  id: HorizonRndDiskShiparmory
-  name: RnD storage drive
-  description: "An empty storage drive for the RnD data center. Discipline: ship armory."
-  components:
-  - type: RndDisk
-    discipline: Shiparmory

@@ -1,6 +1,8 @@
 using Content.Shared.Containers.ItemSlots;
 using Content.Shared.Lock;
 using Content.Shared.Popups;
+using Content.Shared.Research.Prototypes;
+using Robust.Shared.Prototypes;
 
 namespace Content.Shared._Horizon.Research;
 
@@ -50,8 +52,16 @@ public sealed class RndArraySlotSystem : EntitySystem
         if (slot == null)
             return;
 
-        if (!TryComp<RndDiskComponent>(args.Item, out var disk) || disk.Discipline != slot.Discipline)
+        if (!TryComp<RndDiskComponent>(args.Item, out var disk) || !CanTakeDisk(disk, slot.Discipline))
             args.Cancelled = true;
+    }
+
+    /// <summary>
+    /// Whether a drive fits a slot of the discipline: it is of that discipline, or nothing is written to it yet.
+    /// </summary>
+    public static bool CanTakeDisk(RndDiskComponent disk, ProtoId<TechDisciplinePrototype> discipline)
+    {
+        return disk.Discipline == null || disk.Discipline == discipline || disk.Technologies.Count == 0;
     }
 
     private void OnLockToggleAttempt(Entity<RndArrayComponent> ent, ref LockToggleAttemptEvent args)

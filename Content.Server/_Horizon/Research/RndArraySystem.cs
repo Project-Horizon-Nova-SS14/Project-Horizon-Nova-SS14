@@ -89,6 +89,17 @@ public sealed class RndArraySystem : EntitySystem
 
     private void OnInserted(Entity<RndArrayComponent> ent, ref EntInsertedIntoContainerMessage args)
     {
+        // A drive takes the discipline of the slot it is put in.
+        var id = args.Container.ID;
+        var slot = ent.Comp.Slots.Find(s => s.Id == id);
+        if (slot != null
+            && TryComp<RndDiskComponent>(args.Entity, out var disk)
+            && disk.Discipline != slot.Discipline)
+        {
+            disk.Discipline = slot.Discipline;
+            Dirty(args.Entity, disk);
+        }
+
         OnSlotChanged(ent, args.Container);
     }
 
@@ -169,16 +180,16 @@ public sealed class RndArraySystem : EntitySystem
     /// <summary>
     /// The disks that work: in the slot of their discipline and not broken.
     /// </summary>
-    private List<(RndArraySlot Slot, RndDiskComponent Disk)> GetWorkingDisks(RndArrayComponent array)
+    private List<(RndArraySlot Slot, Entity<RndDiskComponent> Disk)> GetWorkingDisks(RndArrayComponent array)
     {
-        var disks = new List<(RndArraySlot, RndDiskComponent)>();
+        var disks = new List<(RndArraySlot, Entity<RndDiskComponent>)>();
         foreach (var slot in array.Slots)
         {
             if (slot.Slot.Item is { } item
                 && TryComp<RndDiskComponent>(item, out var disk)
                 && !disk.Broken
                 && disk.Discipline == slot.Discipline)
-                disks.Add((slot, disk));
+                disks.Add((slot, new Entity<RndDiskComponent>(item, disk)));
         }
 
         return disks;
@@ -202,17 +213,19 @@ public sealed class RndArraySystem : EntitySystem
         {
             foreach (var tech in database.UnlockedTechnologies)
             {
-                if (disks.Exists(d => d.Disk.Technologies.Contains(tech))
+                if (disks.Exists(d => d.Disk.Comp.Technologies.Contains(tech))
                     || !_prototype.TryIndex(tech, out var proto))
                     continue;
 
                 foreach (var discipline in proto.GetAllDisciplines())
                 {
-                    var target = disks.Find(d => d.Slot.Discipline == discipline);
-                    if (target.Disk == null)
+                    var target = disks.FindIndex(d => d.Slot.Discipline == discipline);
+                    if (target < 0)
                         continue;
 
-                    target.Disk.Technologies.Add(tech);
+                    var disk = disks[target].Disk;
+                    disk.Comp.Technologies.Add(tech);
+                    Dirty(disk);
                     break;
                 }
             }
@@ -225,7 +238,7 @@ public sealed class RndArraySystem : EntitySystem
             if (!disciplines.Contains(slot.Discipline))
                 disciplines.Add(slot.Discipline);
 
-            foreach (var tech in disk.Technologies)
+            foreach (var tech in disk.Comp.Technologies)
             {
                 if (!technologies.Contains(tech))
                     technologies.Add(tech);
@@ -270,12 +283,13 @@ public sealed class RndArraySystem : EntitySystem
         var broke = false;
         foreach (var (slot, disk) in GetWorkingDisks(ent.Comp))
         {
-            disk.Wear += time;
-            if (disk.Wear < disk.Lifetime)
+            disk.Comp.Wear += time;
+            if (disk.Comp.Wear < disk.Comp.Lifetime)
                 continue;
 
-            disk.Broken = true;
-            disk.Technologies.Clear();
+            disk.Comp.Broken = true;
+            disk.Comp.Technologies.Clear();
+            Dirty(disk);
             broke = true;
 
             _popup.PopupEntity(Loc.GetString("rnd-array-disk-broken", ("discipline", DisciplineName(slot.Discipline))),
@@ -342,8 +356,15 @@ public sealed class RndArraySystem : EntitySystem
 
         using (args.PushGroup(nameof(RndDiskComponent)))
         {
-            args.PushMarkup(Loc.GetString("rnd-disk-examine-discipline",
-                ("discipline", DisciplineName(ent.Comp.Discipline))));
+            if (ent.Comp.Discipline is { } discipline)
+            {
+                args.PushMarkup(Loc.GetString("rnd-disk-examine-discipline",
+                    ("discipline", DisciplineName(discipline))));
+            }
+            else
+            {
+                args.PushMarkup(Loc.GetString("rnd-disk-examine-blank"));
+            }
 
             if (ent.Comp.Broken)
             {

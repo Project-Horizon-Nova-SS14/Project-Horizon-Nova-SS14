@@ -85,7 +85,7 @@
       ledLayer: disk1-led
       slot:
         name: rnd-array-slot-engineering
-        startingItem: HorizonRndDiskEngineering
+        startingItem: HorizonRndDisk
         locked: true
         whitelist:
           components:
@@ -96,7 +96,7 @@
       ledLayer: disk2-led
       slot:
         name: rnd-array-slot-medical
-        startingItem: HorizonRndDiskMedical
+        startingItem: HorizonRndDisk
         locked: true
         whitelist:
           components:
@@ -107,7 +107,7 @@
       ledLayer: disk3-led
       slot:
         name: rnd-array-slot-salvage
-        startingItem: HorizonRndDiskSalvage
+        startingItem: HorizonRndDisk
         locked: true
         whitelist:
           components:
@@ -118,7 +118,7 @@
       ledLayer: disk4-led
       slot:
         name: rnd-array-slot-science
-        startingItem: HorizonRndDiskScience
+        startingItem: HorizonRndDisk
         locked: true
         whitelist:
           components:
@@ -129,7 +129,7 @@
       ledLayer: disk5-led
       slot:
         name: rnd-array-slot-service
-        startingItem: HorizonRndDiskService
+        startingItem: HorizonRndDisk
         locked: true
         whitelist:
           components:
@@ -140,7 +140,7 @@
       ledLayer: disk6-led
       slot:
         name: rnd-array-slot-shiparmory
-        startingItem: HorizonRndDiskShiparmory
+        startingItem: HorizonRndDisk
         locked: true
         whitelist:
           components:

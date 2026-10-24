@@ -29,6 +29,7 @@ rnd-array-ui-condition = ~{ $condition }%
 rnd-array-ui-technologies = Technologies: { $count }
 rnd-array-ui-eject = Eject
 
+rnd-disk-examine-blank = Discipline: [color=gray]none, the drive is blank[/color].
 rnd-disk-examine-discipline = Discipline: [color=yellow]{ $discipline }[/color].
 rnd-disk-examine-broken = [color=red]The drive is broken, its data is lost.[/color]
 rnd-disk-examine-condition = Condition: ~{ $condition }%.

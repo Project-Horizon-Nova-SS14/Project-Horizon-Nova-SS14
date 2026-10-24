@@ -1,14 +1,9 @@
-# Protolathe recipes of the RnD network: empty storage drives and the boards of the relays and the access point.
+# Protolathe recipes of the RnD network: universal storage drives and the boards of the relays and the access point.
 # The relay boards of higher levels need rarer materials.
 - type: latheRecipePack
   id: HorizonRndStatic
   recipes:
-  - HorizonRndDiskEngineering
-  - HorizonRndDiskMedical
-  - HorizonRndDiskSalvage
-  - HorizonRndDiskScience
-  - HorizonRndDiskService
-  - HorizonRndDiskShiparmory
+  - HorizonRndDisk
   - HorizonRndRelayMachineCircuitboard
   - HorizonRndRelay2MachineCircuitboard
   - HorizonRndRelay3MachineCircuitboard
@@ -17,43 +12,13 @@
   - HorizonRndAccessPointMachineCircuitboard
 
 - type: latheRecipe
-  abstract: true
-  id: HorizonRndDiskRecipe
+  id: HorizonRndDisk
+  result: HorizonRndDisk
   completetime: 4
   materials:
     Steel: 100
     Plastic: 300
     Glass: 100
-
-- type: latheRecipe
-  parent: HorizonRndDiskRecipe
-  id: HorizonRndDiskEngineering
-  result: HorizonRndDiskEngineering
-
-- type: latheRecipe
-  parent: HorizonRndDiskRecipe
-  id: HorizonRndDiskMedical
-  result: HorizonRndDiskMedical
-
-- type: latheRecipe
-  parent: HorizonRndDiskRecipe
-  id: HorizonRndDiskSalvage
-  result: HorizonRndDiskSalvage
-
-- type: latheRecipe
-  parent: HorizonRndDiskRecipe
-  id: HorizonRndDiskScience
-  result: HorizonRndDiskScience
-
-- type: latheRecipe
-  parent: HorizonRndDiskRecipe
-  id: HorizonRndDiskService
-  result: HorizonRndDiskService
-
-- type: latheRecipe
-  parent: HorizonRndDiskRecipe
-  id: HorizonRndDiskShiparmory
-  result: HorizonRndDiskShiparmory
 
 - type: latheRecipe
   parent: BaseCircuitboardRecipe

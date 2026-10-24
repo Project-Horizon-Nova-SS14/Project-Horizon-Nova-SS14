@@ -29,6 +29,7 @@ rnd-array-ui-condition = ~{ $condition }%
 rnd-array-ui-technologies = Технологий: { $count }
 rnd-array-ui-eject = Извлечь
 
+rnd-disk-examine-blank = Назначение: [color=gray]нет, накопитель пуст[/color].
 rnd-disk-examine-discipline = Дисциплина: [color=yellow]{ $discipline }[/color].
 rnd-disk-examine-broken = [color=red]Накопитель сломан, данные утеряны.[/color]
 rnd-disk-examine-condition = Состояние: ~{ $condition }%.
@@ -61,18 +62,8 @@ rnd-access-point-relay-full = У ретранслятора нет свобод�
 
 ent-HorizonRndArray = дата-центр РНД
     .desc = Серверная стойка с РНД накопителями, на которых хранятся все изученные технологии. Машины в других местах получают к ней доступ через РНД ретрансляторы.
-ent-HorizonRndDiskEngineering = РНД накопитель
-    .desc = Пустой накопитель для дата-центра РНД. Дисциплина: инженерия.
-ent-HorizonRndDiskMedical = РНД накопитель
-    .desc = Пустой накопитель для дата-центра РНД. Дисциплина: медицина.
-ent-HorizonRndDiskSalvage = РНД накопитель
-    .desc = Пустой накопитель для дата-центра РНД. Дисциплина: утилизация.
-ent-HorizonRndDiskScience = РНД накопитель
-    .desc = Пустой накопитель для дата-центра РНД. Дисциплина: наука.
-ent-HorizonRndDiskService = РНД накопитель
-    .desc = Пустой накопитель для дата-центра РНД. Дисциплина: сервис.
-ent-HorizonRndDiskShiparmory = РНД накопитель
-    .desc = Пустой накопитель для дата-центра РНД. Дисциплина: корабельное вооружение.
+ent-HorizonRndDisk = РНД накопитель
+    .desc = Универсальный накопитель для дата-центра РНД. Получает дисциплину слота, в который его вставили.
 ent-HorizonRndRelay = РНД ретранслятор (ур. 1)
     .desc = Связывает точки доступа РНД с дата-центром РНД. Каждая точка доступа занимает один канал. Каналов: 5.
 ent-HorizonRndRelay2 = РНД ретранслятор (ур. 2)

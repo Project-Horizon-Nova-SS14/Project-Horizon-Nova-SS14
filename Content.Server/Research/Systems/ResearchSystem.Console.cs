@@ -133,12 +133,22 @@ public sealed partial class ResearchSystem
     private void OnConsoleRegistrationChanged(EntityUid uid, ResearchConsoleComponent component, ref ResearchRegistrationChangedEvent args)
     {
         SyncClientWithServer(uid);
+
+        // Horizon: every console is connected to the one RnD data center, so rebuilding all of them is costly.
+        // The state is rebuilt when the window is opened.
+        if (!_uiSystem.IsUiOpen(uid, ResearchConsoleUiKey.Key))
+            return;
+
         UpdateConsoleInterface(uid, component);
     }
 
     private void OnConsoleDatabaseModified(EntityUid uid, ResearchConsoleComponent component, ref TechnologyDatabaseModifiedEvent args)
     {
         SyncClientWithServer(uid);
+
+        if (!_uiSystem.IsUiOpen(uid, ResearchConsoleUiKey.Key)) // Horizon: see OnConsoleRegistrationChanged
+            return;
+
         UpdateConsoleInterface(uid, component);
     }
 
