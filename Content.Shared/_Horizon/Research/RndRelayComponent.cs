@@ -4,11 +4,15 @@ namespace Content.Shared._Horizon.Research;
 
 /// <summary>
 /// An RnD relay: wirelessly links access points to the RnD array, wherever they are. Every linked access point takes
-/// one channel, and when all are taken no more access points can link. Handled by RndNetworkSystem.
+/// one channel, and when all are taken no more access points can link. Relays of higher levels have more channels.
+/// Handled by RndNetworkSystem.
 /// </summary>
 [RegisterComponent]
 public sealed partial class RndRelayComponent : Component
 {
+    [DataField]
+    public int Level = 1;
+
     [DataField]
     public int Capacity = 5;
 
@@ -31,13 +35,18 @@ public sealed class RndNetworkDeviceEntry(NetEntity entity, string name, bool on
 }
 
 [Serializable, NetSerializable]
-public sealed class RndRelayBoundUserInterfaceState(bool online, int capacity, List<RndNetworkDeviceEntry> accessPoints)
-    : BoundUserInterfaceState
+public sealed class RndRelayBoundUserInterfaceState(
+    bool online,
+    int level,
+    int capacity,
+    List<RndNetworkDeviceEntry> accessPoints) : BoundUserInterfaceState
 {
     /// <summary>
     /// Whether the relay works and the RnD array exists.
     /// </summary>
     public readonly bool Online = online;
+
+    public readonly int Level = level;
 
     public readonly int Capacity = capacity;
     public readonly List<RndNetworkDeviceEntry> AccessPoints = accessPoints;

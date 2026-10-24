@@ -26,6 +26,10 @@ public sealed class RndNetworkSystem : EntitySystem
 
     private TimeSpan _nextCheck;
 
+    private readonly HashSet<EntityUid> _reachableGrids = new();
+    private readonly List<EntityUid> _changed = new();
+    private readonly List<Entity<ResearchClientComponent>> _waiting = new();
+
     public override void Initialize()
     {
         base.Initialize();
@@ -114,38 +118,61 @@ public sealed class RndNetworkSystem : EntitySystem
     }
 
     /// <summary>
+    /// Fills the set with the grids whose research machines can reach the array:
+    /// the grid of the array and the grids with a linked access point.
+    /// </summary>
+    private void CollectReachableGrids(EntityUid array, HashSet<EntityUid> grids)
+    {
+        grids.Clear();
+        if (Transform(array).GridUid is { } arrayGrid)
+            grids.Add(arrayGrid);
+
+        var query = EntityQueryEnumerator<RndAccessPointComponent, TransformComponent>();
+        while (query.MoveNext(out var uid, out var point, out var xform))
+        {
+            if (xform.GridUid is { } grid && !grids.Contains(grid) && IsLinked((uid, point)))
+                grids.Add(grid);
+        }
+    }
+
+    /// <summary>
     /// Disconnects the research machines that lost the array and connects the ones that can reach it.
+    /// The reachable grids are found once, since there are many machines and few access points.
     /// </summary>
     private void RefreshClients()
     {
-        Entity<ResearchServerComponent>? array = null;
         var arrays = EntityQueryEnumerator<RndArrayComponent, ResearchServerComponent>();
-        while (arrays.MoveNext(out var uid, out _, out var server))
-        {
-            foreach (var client in new List<EntityUid>(server.Clients))
-            {
-                if (!CanReachArray(client, uid))
-                    _research.UnregisterClient(client, uid, serverComponent: server);
-            }
-
-            array ??= new Entity<ResearchServerComponent>(uid, server);
-        }
-
-        if (array is not { } found)
+        if (!arrays.MoveNext(out var arrayUid, out _, out var server))
             return;
 
-        var waiting = new List<Entity<ResearchClientComponent>>();
+        CollectReachableGrids(arrayUid, _reachableGrids);
+
+        _changed.Clear();
+        foreach (var client in server.Clients)
+        {
+            if (Transform(client).GridUid is not { } grid || !_reachableGrids.Contains(grid))
+                _changed.Add(client);
+        }
+
+        foreach (var client in _changed)
+        {
+            _research.UnregisterClient(client, arrayUid, serverComponent: server);
+        }
+
+        _waiting.Clear();
         var clients = EntityQueryEnumerator<ResearchClientComponent, TransformComponent>();
         while (clients.MoveNext(out var uid, out var client, out var xform))
         {
-            if (client.Server == null && xform.Anchored)
-                waiting.Add((uid, client));
+            if (client.Server == null
+                && xform.Anchored
+                && xform.GridUid is { } grid
+                && _reachableGrids.Contains(grid))
+                _waiting.Add((uid, client));
         }
 
-        foreach (var client in waiting)
+        foreach (var client in _waiting)
         {
-            if (CanReachArray(client, found))
-                _research.RegisterClient(client, found, client.Comp, found.Comp);
+            _research.RegisterClient(client, arrayUid, client.Comp, server);
         }
     }
 
@@ -268,7 +295,7 @@ public sealed class RndNetworkSystem : EntitySystem
 
         _ui.SetUiState(ent.Owner,
             RndRelayUiKey.Key,
-            new RndRelayBoundUserInterfaceState(IsRelayOnline(ent), ent.Comp.Capacity, points));
+            new RndRelayBoundUserInterfaceState(IsRelayOnline(ent), ent.Comp.Level, ent.Comp.Capacity, points));
     }
 
     private void UpdatePointUi(Entity<RndAccessPointComponent> ent)

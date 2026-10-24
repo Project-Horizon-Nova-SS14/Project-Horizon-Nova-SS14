@@ -1,9 +1,10 @@
-# The RnD relay links up to five access points to the RnD array, wirelessly and wherever they are.
+# The RnD relay links access points to the RnD data center, wirelessly and wherever they are. There are five levels,
+# each a machine of its own with its own board; a higher level has more channels. Upgrading means rebuilding the
+# machine with the board of the next level.
 - type: entity
-  id: HorizonRndRelay
+  abstract: true
+  id: HorizonRndRelayBase
   parent: [ BaseMachinePowered, ConstructibleMachine ]
-  name: RnD relay
-  description: Links RnD access points to the RnD array. Every access point takes one of its channels.
   components:
   - type: Sprite
     sprite: Structures/Machines/telecomms.rsi
@@ -23,10 +24,6 @@
         enum.PowerDeviceVisualLayers.Powered:
           True: { visible: true }
           False: { visible: false }
-  - type: Machine
-    board: HorizonRndRelayMachineCircuitboard
-  - type: RndRelay
-    capacity: 5
   - type: ActivatableUI
     key: enum.RndRelayUiKey.Key
   - type: ActivatableUIRequiresAnchor
@@ -37,13 +34,83 @@
   - type: ApcPowerReceiver
     powerLoad: 500
 
-# The RnD access point gives the research machines of its grid the technologies of the RnD array once it is linked to
+- type: entity
+  id: HorizonRndRelay
+  parent: HorizonRndRelayBase
+  name: RnD relay (level 1)
+  description: Links RnD access points to the RnD data center. Every access point takes one of its 5 channels.
+  components:
+  - type: Machine
+    board: HorizonRndRelayMachineCircuitboard
+  - type: RndRelay
+    level: 1
+    capacity: 5
+  - type: ApcPowerReceiver
+    powerLoad: 500
+
+- type: entity
+  id: HorizonRndRelay2
+  parent: HorizonRndRelayBase
+  name: RnD relay (level 2)
+  description: Links RnD access points to the RnD data center. Every access point takes one of its 8 channels.
+  components:
+  - type: Machine
+    board: HorizonRndRelay2MachineCircuitboard
+  - type: RndRelay
+    level: 2
+    capacity: 8
+  - type: ApcPowerReceiver
+    powerLoad: 600
+
+- type: entity
+  id: HorizonRndRelay3
+  parent: HorizonRndRelayBase
+  name: RnD relay (level 3)
+  description: Links RnD access points to the RnD data center. Every access point takes one of its 12 channels.
+  components:
+  - type: Machine
+    board: HorizonRndRelay3MachineCircuitboard
+  - type: RndRelay
+    level: 3
+    capacity: 12
+  - type: ApcPowerReceiver
+    powerLoad: 700
+
+- type: entity
+  id: HorizonRndRelay4
+  parent: HorizonRndRelayBase
+  name: RnD relay (level 4)
+  description: Links RnD access points to the RnD data center. Every access point takes one of its 16 channels.
+  components:
+  - type: Machine
+    board: HorizonRndRelay4MachineCircuitboard
+  - type: RndRelay
+    level: 4
+    capacity: 16
+  - type: ApcPowerReceiver
+    powerLoad: 800
+
+- type: entity
+  id: HorizonRndRelay5
+  parent: HorizonRndRelayBase
+  name: RnD relay (level 5)
+  description: Links RnD access points to the RnD data center. Every access point takes one of its 20 channels.
+  components:
+  - type: Machine
+    board: HorizonRndRelay5MachineCircuitboard
+  - type: RndRelay
+    level: 5
+    capacity: 20
+  - type: ApcPowerReceiver
+    powerLoad: 1000
+
+# The RnD access point gives the research machines of its grid the technologies of the RnD data center once it is linked to
 # a relay.
 - type: entity
   id: HorizonRndAccessPoint
   parent: [ BaseMachinePowered, ConstructibleMachine ]
   name: RnD access point
-  description: Gives the research machines of the ship the technologies of the RnD array. Link it to an RnD relay.
+  description: Gives the research machines of the ship the technologies of the RnD data center. Link it to an RnD relay.
   components:
   - type: Sprite
     sprite: Structures/Machines/server.rsi
@@ -81,8 +148,8 @@
 - type: entity
   id: HorizonRndRelayMachineCircuitboard
   parent: BaseMachineCircuitboard
-  name: RnD relay machine board
-  description: A machine printed circuit board for an RnD relay.
+  name: RnD relay machine board (level 1)
+  description: A machine printed circuit board for a level 1 RnD relay.
   components:
   - type: Sprite
     state: science
@@ -95,6 +162,80 @@
       Steel: 5
       Glass: 2
       Cable: 5
+
+- type: entity
+  id: HorizonRndRelay2MachineCircuitboard
+  parent: BaseMachineCircuitboard
+  name: RnD relay machine board (level 2)
+  description: A machine printed circuit board for a level 2 RnD relay.
+  components:
+  - type: Sprite
+    state: science
+  - type: MachineBoard
+    prototype: HorizonRndRelay2
+    requirements:
+      Capacitor: 3
+      Manipulator: 1
+    stackRequirements:
+      Steel: 5
+      Glass: 4
+      Cable: 10
+
+- type: entity
+  id: HorizonRndRelay3MachineCircuitboard
+  parent: BaseMachineCircuitboard
+  name: RnD relay machine board (level 3)
+  description: A machine printed circuit board for a level 3 RnD relay.
+  components:
+  - type: Sprite
+    state: science
+  - type: MachineBoard
+    prototype: HorizonRndRelay3
+    requirements:
+      Capacitor: 4
+      Manipulator: 2
+    stackRequirements:
+      Steel: 10
+      Glass: 5
+      CableHV: 5
+
+- type: entity
+  id: HorizonRndRelay4MachineCircuitboard
+  parent: BaseMachineCircuitboard
+  name: RnD relay machine board (level 4)
+  description: A machine printed circuit board for a level 4 RnD relay.
+  components:
+  - type: Sprite
+    state: science
+  - type: MachineBoard
+    prototype: HorizonRndRelay4
+    requirements:
+      Capacitor: 4
+      Manipulator: 3
+    stackRequirements:
+      Steel: 10
+      Glass: 5
+      CableHV: 10
+      Plasma: 5
+
+- type: entity
+  id: HorizonRndRelay5MachineCircuitboard
+  parent: BaseMachineCircuitboard
+  name: RnD relay machine board (level 5)
+  description: A machine printed circuit board for a level 5 RnD relay.
+  components:
+  - type: Sprite
+    state: science
+  - type: MachineBoard
+    prototype: HorizonRndRelay5
+    requirements:
+      Capacitor: 6
+      Manipulator: 4
+    stackRequirements:
+      Steel: 15
+      Glass: 10
+      CableHV: 15
+      Plasma: 10
 
 - type: entity
   id: HorizonRndAccessPointMachineCircuitboard

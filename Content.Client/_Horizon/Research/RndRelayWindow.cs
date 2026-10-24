@@ -10,6 +10,7 @@ namespace Content.Client._Horizon.Research;
 public sealed class RndRelayWindow : DefaultWindow
 {
     private readonly Label _statusLabel = new();
+    private readonly Label _levelLabel = new();
     private readonly Label _capacityLabel = new();
     private readonly BoxContainer _points = new()
     {
@@ -32,6 +33,7 @@ public sealed class RndRelayWindow : DefaultWindow
         };
 
         box.AddChild(_statusLabel);
+        box.AddChild(_levelLabel);
         box.AddChild(_capacityLabel);
         box.AddChild(new Label { Text = Loc.GetString("rnd-relay-ui-access-points") });
         box.AddChild(new ScrollContainer { VerticalExpand = true, HScrollEnabled = false, Children = { _points } });
@@ -41,6 +43,7 @@ public sealed class RndRelayWindow : DefaultWindow
     public void SetState(RndRelayBoundUserInterfaceState state)
     {
         _statusLabel.Text = Loc.GetString(state.Online ? "rnd-network-ui-online" : "rnd-network-ui-offline");
+        _levelLabel.Text = Loc.GetString("rnd-relay-ui-level", ("level", state.Level));
         _capacityLabel.Text = Loc.GetString("rnd-relay-ui-capacity",
             ("used", state.AccessPoints.Count),
             ("capacity", state.Capacity),

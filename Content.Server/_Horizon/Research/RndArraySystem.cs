@@ -63,7 +63,8 @@ public sealed class RndArraySystem : EntitySystem
             var broke = false;
             if (now >= array.NextWear)
             {
-                array.NextWear += array.WearInterval;
+                // Never catch up on missed time, that would wear the disks out many times faster.
+                array.NextWear = now + array.WearInterval;
                 if (this.IsPowered(uid, EntityManager))
                     broke = WearDisks(ent, array.WearInterval);
             }

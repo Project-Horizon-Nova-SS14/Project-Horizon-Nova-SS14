@@ -1,11 +1,11 @@
-# The RnD array: the one research server of the game, placed on the station map. Every discipline has its own disk
-# slot, and the technologies of a discipline exist only while a working disk is in its slot. The rack can be opened
-# (alt verb or the interface) only while it is unlocked with research access. Destroying it destroys the disks.
+# The RnD data center: the one research server of the game, placed on the station map. Every discipline has its own
+# storage drive slot, and the technologies of a discipline exist only while a working drive is in its slot. The rack
+# can be opened with the alt verb or the interface. Destroying it drops the drives with their technologies.
 - type: entity
   id: HorizonRndArray
   parent: BaseMachinePowered
-  name: RnD array
-  description: The research server rack holding the disks with all researched technologies. Machines elsewhere reach it through RnD relays.
+  name: RnD data center
+  description: The research server rack holding the storage drives with all researched technologies. Machines elsewhere reach it through RnD relays.
   components:
   - type: Sprite
     sprite: _Horizon/Structures/Machines/rnd_array.rsi
@@ -156,13 +156,13 @@
   - type: Damageable
     damageContainer: StructuralInorganic
     damageModifierSet: StructuralMetallic
-  # No container is emptied: the disks are destroyed with the array.
   - type: Destructible
     thresholds:
     - trigger:
         !type:DamageTrigger
         damage: 600
       behaviors:
+      - !type:EmptyAllContainersBehaviour
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
       - !type:PlaySoundBehavior

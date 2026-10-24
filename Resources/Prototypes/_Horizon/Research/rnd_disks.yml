@@ -1,5 +1,6 @@
-# Disks of the RnD array, one kind per discipline. A new disk is empty; it keeps the technologies researched while it
-# is in the slot of its discipline, and breaks after a day of work, losing them.
+# RnD storage drives of the data center, one kind per discipline; they look the same and the description names the
+# discipline. A new drive is empty; it keeps the technologies researched while it is in the slot of its discipline,
+# and breaks after a day of work, losing them.
 - type: entity
   abstract: true
   parent: BaseItem
@@ -22,9 +23,7 @@
         volume: -6
   - type: Sprite
     sprite: _Horizon/Objects/Specific/Research/rnd_disk.rsi
-    layers:
-    - state: icon
-    - state: stripes
+    state: icon
   - type: Item
     size: Tiny
   - type: StaticPrice
@@ -33,83 +32,53 @@
 - type: entity
   parent: HorizonRndDiskBase
   id: HorizonRndDiskEngineering
-  name: RnD array disk (engineering)
-  description: A disk for the engineering slot of the RnD array.
+  name: RnD storage drive
+  description: "An empty storage drive for the RnD data center. Discipline: engineering."
   components:
-  - type: Sprite
-    layers:
-    - state: icon
-    - state: stripes
-      color: "#f0d060"
   - type: RndDisk
     discipline: NFEngineering
 
 - type: entity
   parent: HorizonRndDiskBase
   id: HorizonRndDiskMedical
-  name: RnD array disk (medical)
-  description: A disk for the medical slot of the RnD array.
+  name: RnD storage drive
+  description: "An empty storage drive for the RnD data center. Discipline: medical."
   components:
-  - type: Sprite
-    layers:
-    - state: icon
-    - state: stripes
-      color: "#70b4f0"
   - type: RndDisk
     discipline: NFMedical
 
 - type: entity
   parent: HorizonRndDiskBase
   id: HorizonRndDiskSalvage
-  name: RnD array disk (salvage)
-  description: A disk for the salvage slot of the RnD array.
+  name: RnD storage drive
+  description: "An empty storage drive for the RnD data center. Discipline: salvage."
   components:
-  - type: Sprite
-    layers:
-    - state: icon
-    - state: stripes
-      color: "#d29a55"
   - type: RndDisk
     discipline: NFSalvage
 
 - type: entity
   parent: HorizonRndDiskBase
   id: HorizonRndDiskScience
-  name: RnD array disk (science)
-  description: A disk for the science slot of the RnD array.
+  name: RnD storage drive
+  description: "An empty storage drive for the RnD data center. Discipline: science."
   components:
-  - type: Sprite
-    layers:
-    - state: icon
-    - state: stripes
-      color: "#c070e8"
   - type: RndDisk
     discipline: NFScience
 
 - type: entity
   parent: HorizonRndDiskBase
   id: HorizonRndDiskService
-  name: RnD array disk (service)
-  description: A disk for the service slot of the RnD array.
+  name: RnD storage drive
+  description: "An empty storage drive for the RnD data center. Discipline: service."
   components:
-  - type: Sprite
-    layers:
-    - state: icon
-    - state: stripes
-      color: "#70d860"
   - type: RndDisk
     discipline: NFService
 
 - type: entity
   parent: HorizonRndDiskBase
   id: HorizonRndDiskShiparmory
-  name: RnD array disk (ship armory)
-  description: A disk for the ship armory slot of the RnD array.
+  name: RnD storage drive
+  description: "An empty storage drive for the RnD data center. Discipline: ship armory."
   components:
-  - type: Sprite
-    layers:
-    - state: icon
-    - state: stripes
-      color: "#6fa8e0"
   - type: RndDisk
     discipline: Shiparmory

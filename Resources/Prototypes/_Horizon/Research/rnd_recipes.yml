@@ -1,4 +1,5 @@
-# Protolathe recipes of the RnD network: empty array disks and the boards of the relay and the access point.
+# Protolathe recipes of the RnD network: empty storage drives and the boards of the relays and the access point.
+# The relay boards of higher levels need rarer materials.
 - type: latheRecipePack
   id: HorizonRndStatic
   recipes:
@@ -9,6 +10,10 @@
   - HorizonRndDiskService
   - HorizonRndDiskShiparmory
   - HorizonRndRelayMachineCircuitboard
+  - HorizonRndRelay2MachineCircuitboard
+  - HorizonRndRelay3MachineCircuitboard
+  - HorizonRndRelay4MachineCircuitboard
+  - HorizonRndRelay5MachineCircuitboard
   - HorizonRndAccessPointMachineCircuitboard
 
 - type: latheRecipe
@@ -59,3 +64,45 @@
   parent: BaseCircuitboardRecipe
   id: HorizonRndAccessPointMachineCircuitboard
   result: HorizonRndAccessPointMachineCircuitboard
+
+- type: latheRecipe
+  id: HorizonRndRelay2MachineCircuitboard
+  result: HorizonRndRelay2MachineCircuitboard
+  completetime: 8
+  materials:
+    Steel: 100
+    Glass: 500
+    Silver: 100
+
+- type: latheRecipe
+  id: HorizonRndRelay3MachineCircuitboard
+  result: HorizonRndRelay3MachineCircuitboard
+  completetime: 10
+  materials:
+    Steel: 200
+    Glass: 500
+    Silver: 100
+    Gold: 100
+
+- type: latheRecipe
+  id: HorizonRndRelay4MachineCircuitboard
+  result: HorizonRndRelay4MachineCircuitboard
+  completetime: 12
+  materials:
+    Steel: 200
+    Glass: 750
+    Silver: 200
+    Gold: 200
+    Plasma: 200
+
+- type: latheRecipe
+  id: HorizonRndRelay5MachineCircuitboard
+  result: HorizonRndRelay5MachineCircuitboard
+  completetime: 14
+  materials:
+    Steel: 300
+    Glass: 1000
+    Silver: 300
+    Gold: 300
+    Plasma: 400
+    Uranium: 200
